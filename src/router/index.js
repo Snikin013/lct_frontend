@@ -1,16 +1,17 @@
 import { createRouter, createWebHistory } from "vue-router";
-import lctMainWrapper from "../components/lct-main-wrapper";
+import lctMainPage from "../components/main-page/lct-main-page";
+import lctAnalyticsPage from "../components/analytics-page/lct-analytics-page";
 
 const routes = [
   {
     path: "/",
-    name: "home",
-    component: lctMainWrapper,
+    name: "mainPage",
+    component: lctMainPage,
   },
   {
-    path: "/about",
-    name: "about",
-    component: lctMainWrapper,
+    path: "/analytics",
+    name: "analyticsPage",
+    component: lctAnalyticsPage,
   },
 ];
 

@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "lct-seasonality-demand",
   data: function () {
@@ -77,6 +78,9 @@ export default {
         ],
       },
     };
+  },
+  computed: {
+    ...mapGetters(["GRAPHS"]),
   },
 };
 </script>

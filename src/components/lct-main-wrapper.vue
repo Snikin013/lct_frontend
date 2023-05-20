@@ -20,7 +20,6 @@ export default {
 
 <style scoped lang="scss">
 .lct-main-wrapper {
-  max-width: 900px;
   margin: 0 auto;
 }
 </style>

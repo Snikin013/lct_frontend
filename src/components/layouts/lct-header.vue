@@ -7,7 +7,7 @@
         </router-link>
         <router-link :to="{ name: 'mainPage' }">RusFuture </router-link>
       </div>
-      <div class="lct-info">
+      <div class="lct-header__info">
         <router-link :to="{ name: 'mainPage' }">Главная </router-link>
         <router-link :to="{ name: 'analyticsPage' }">Аналитика </router-link>
       </div>
@@ -28,7 +28,6 @@ export default {
   align-items: center;
   background: #656293;
   padding: 16px;
-  position: fixed;
   width: 100%;
   top: 0;
   left: 0;

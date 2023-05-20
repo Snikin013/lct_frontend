@@ -4,6 +4,7 @@
       Определение сезонности спроса по классам бронирования, по вылетевшим
       рейсам. (2017-2019 год)
     </h1>
+    <router-link :to="{ name: 'analyticsPage' }">Назад </router-link>
     <apexchart
       class="chart"
       type="bar"
@@ -80,7 +81,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["GRAPHS"]),
+    ...mapGetters(["GRAPH"]),
   },
 };
 </script>

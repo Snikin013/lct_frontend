@@ -1,16 +1,12 @@
 <template>
   <div class="lct-main-page">
-    <lctCarousel />
+    <h1>Дизайна пока нет, но он обязательно скоро появится</h1>
   </div>
 </template>
 
 <script>
-import lctCarousel from "../design/lct-carousel.vue";
 export default {
   name: "lct-main-page",
-  components: {
-    lctCarousel,
-  },
 };
 </script>
 

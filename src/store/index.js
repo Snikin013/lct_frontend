@@ -9,7 +9,10 @@ const actions = { ...commonActions, ...apiRequests };
 
 export default createStore({
   state: {
-    graphs: [],
+    graph: [],
+    directions: [],
+    flightNumbers: [],
+    bookingClasses: [],
   },
   mutations,
   actions,

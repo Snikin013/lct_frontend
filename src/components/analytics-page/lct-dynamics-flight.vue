@@ -4,6 +4,7 @@
       Определение динамики бронирований рейса в разрезе классов бронирования по
       вылетевшим рейсам. (2017-2019 год)
     </h1>
+    <router-link :to="{ name: 'analyticsPage' }">Назад </router-link>
     <apexchart
       class="chart"
       type="bar"

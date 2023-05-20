@@ -4,6 +4,7 @@
       Определение профилей спроса в разрезе классов бронирования, по вылетевшим
       рейсам. (2017-2019 год)
     </h1>
+    <router-link :to="{ name: 'analyticsPage' }">Назад </router-link>
     <apexchart
       type="bar"
       class="chart"

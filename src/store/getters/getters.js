@@ -1,5 +1,14 @@
 export default {
-  GRAPHS(state) {
-    return state.graphs;
+  GRAPH(state) {
+    return state.graph;
+  },
+  DIRECTIONS(state) {
+    return state.directions;
+  },
+  FLIGHT_NUMBERS(state) {
+    return state.flightNumbers;
+  },
+  BOOKING_CLASSES(state) {
+    return state.bookingClasses;
   },
 };

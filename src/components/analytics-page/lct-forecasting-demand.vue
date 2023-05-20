@@ -4,6 +4,7 @@
       Прогнозирование спроса в разрезе классов бронирования для продаваемых
       рейсов. (2018-2019 год)
     </h1>
+    <router-link :to="{ name: 'analyticsPage' }">Назад </router-link>
     <div id="chart">
       <apexchart
         class="chart"

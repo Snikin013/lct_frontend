@@ -1,6 +1,5 @@
 <template>
   <h1>Выберите, что хотите проанализировать:</h1>
-
   <div class="lct-analytics-page">
     <div class="form">
       <a-form
@@ -10,11 +9,18 @@
         @finish="onFinish"
         @finishFailed="onFinishFailed"
       >
-        <a-form-item name="range-picker" v-bind="rangeConfig">
-          <a-range-picker
-            v-model:value="formState['range-picker']"
+        <a-form-item name="bookingStart" v-bind="config">
+          <a-date-picker
+            @change="updateFilters"
+            v-model:value="formState.bookingStart"
             value-format="YYYY-MM-DD"
-            class="dataPicker"
+          />
+        </a-form-item>
+        <a-form-item name="bookingEnd" v-bind="config">
+          <a-date-picker
+            @change="updateFilters"
+            v-model:value="formState.bookingEnd"
+            value-format="YYYY-MM-DD"
           />
         </a-form-item>
         <a-form-item
@@ -25,6 +31,7 @@
           <a-select
             v-model:value="formState.selectType"
             placeholder="Выберите тип анализа"
+            @change="updateFilters"
           >
             <a-select-option value="dynamicsFlight"
               >Определение динамики бронирований рейса в разрезе классов
@@ -53,12 +60,9 @@
           <a-select
             v-model:value="formState.selectDirection"
             placeholder="Выберите направление рейса"
+            @change="updateFilters"
           >
-            <a-select-option
-              value="forecastingDemand"
-              v-for="item in DIRECTIONS.directions"
-              :key="item"
-            >
+            <a-select-option v-for="item in DIRECTIONS.directions" :key="item">
               {{ item }}</a-select-option
             >
           </a-select>
@@ -71,9 +75,9 @@
           <a-select
             v-model:value="formState.selectBookingClass"
             placeholder="Выберите класс бронирования"
+            @change="updateFilters"
           >
             <a-select-option
-              value="forecastingDemand"
               v-for="item in BOOKING_CLASSES.booking_classes"
               :key="item"
             >
@@ -81,15 +85,29 @@
             >
           </a-select>
         </a-form-item>
-        <!-- <a-form-item :wrapper-col="{ span: 12, offset: 6 }">
-          <a-button type="primary" html-type="submit">Submit</a-button>
-        </a-form-item> -->
+        <a-form-item
+          name="flightNumbers"
+          has-feedback
+          :rules="[{ required: true, message: 'Please select your country!' }]"
+        >
+          <a-select
+            v-model:value="formState.flightNumbers"
+            placeholder="Выберите номер рейса"
+            @change="updateFilters"
+          >
+            <a-select-option
+              v-for="item in FLIGHT_NUMBERS.flight_numbers"
+              :key="item"
+            >
+              {{ item }}</a-select-option
+            >
+          </a-select>
+        </a-form-item>
       </a-form>
     </div>
     <router-link :to="{ name: 'determinationDemand' }">
-      <button>Временная заглушка для просмотра примера графика</button>
+      <button @click="requestGraph()">Запросить</button>
     </router-link>
-    <!-- <p>{{ FLIGHT_NUMBERS }}</p> -->
   </div>
 </template>
 
@@ -98,7 +116,56 @@ import { defineComponent, reactive } from "vue";
 import { mapGetters, mapActions } from "vuex";
 export default defineComponent({
   name: "lct-analytics-page",
+  data() {
+    return {
+      selectedCountry: "",
+      searchTerm: "",
+      query: [],
+    };
+  },
+  methods: {
+    ...mapActions([
+      "GET_DIRECTIONS_FROM_API",
+      "GET_FLIGHT_NUMBERS_FROM_API",
+      "GET_BOOKING_CLASSES_FROM_API",
+      "GET_GRAPH_FROM_API",
+    ]),
+    requestGraph() {
+      if (!this.GRAPH.length) {
+        this.GET_GRAPH_FROM_API(this.query);
+      }
+    },
+    updateFilters() {
+      if (this.formState.selectDirection) {
+        this.query.direction = this.formState.selectDirection;
+        if (!this.FLIGHT_NUMBERS.length) {
+          this.GET_FLIGHT_NUMBERS_FROM_API(this.query.direction);
+        }
+      }
 
+      if (this.formState.flightNumbers) {
+        this.query.flight_number = this.formState.flightNumbers;
+      }
+
+      if (this.formState.selectBookingClass) {
+        this.query.booking_class = this.formState.selectBookingClass;
+      }
+
+      if (this.formState.bookingStart) {
+        this.query.booking_start = this.formState.bookingStart;
+      }
+
+      if (this.formState.bookingEnd) {
+        this.query.booking_end = this.formState.bookingEnd;
+      }
+
+      // if (this.formState.selectType) {
+      //   query.selectType = this.formState.selectType;
+      // }
+
+      this.$router.push({ path: "/analytics", query: this.query });
+    },
+  },
   setup() {
     const formItemLayout = {
       labelCol: {
@@ -157,22 +224,14 @@ export default defineComponent({
     };
   },
   computed: {
-    ...mapGetters(["DIRECTIONS", "FLIGHT_NUMBERS", "BOOKING_CLASSES"]),
+    ...mapGetters(["DIRECTIONS", "FLIGHT_NUMBERS", "BOOKING_CLASSES", "GRAPH"]),
   },
-  methods: {
-    ...mapActions([
-      "GET_DIRECTIONS_FROM_API",
-      "GET_FLIGHT_NUMBERS_FROM_API",
-      "GET_BOOKING_CLASSES_FROM_API",
-    ]),
-  },
+
   mounted() {
     if (!this.DIRECTIONS.length) {
       this.GET_DIRECTIONS_FROM_API();
     }
-    if (!this.FLIGHT_NUMBERS.length) {
-      this.GET_FLIGHT_NUMBERS_FROM_API();
-    }
+
     if (!this.BOOKING_CLASSES.length) {
       this.GET_BOOKING_CLASSES_FROM_API();
     }

@@ -11,4 +11,7 @@ export default {
   SET_BOOKING_CLASSES_TO_STATE: (state, bookingClasses) => {
     state.bookingClasses = bookingClasses;
   },
+  SET_GRAPH_TO_STATE: (state, graph) => {
+    state.graph = graph;
+  },
 };

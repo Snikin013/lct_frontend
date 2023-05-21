@@ -9,7 +9,7 @@ const actions = { ...commonActions, ...apiRequests };
 
 export default createStore({
   state: {
-    graph: [],
+    graph: "",
     directions: [],
     flightNumbers: [],
     bookingClasses: [],

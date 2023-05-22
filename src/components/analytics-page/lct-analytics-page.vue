@@ -1,246 +1,187 @@
 <template>
-  <h1>Выберите, что хотите проанализировать:</h1>
   <div class="lct-analytics-page">
-    <div class="form">
-      <a-form
-        :model="formState"
-        name="time_related_controls"
-        v-bind="formItemLayout"
-        @finish="onFinish"
-        @finishFailed="onFinishFailed"
-      >
-        <a-form-item name="bookingStart" v-bind="config">
-          <a-date-picker
-            @change="updateFilters"
-            v-model:value="formState.bookingStart"
-            value-format="YYYY-MM-DD"
-          />
-        </a-form-item>
-        <a-form-item name="bookingEnd" v-bind="config">
-          <a-date-picker
-            @change="updateFilters"
-            v-model:value="formState.bookingEnd"
-            value-format="YYYY-MM-DD"
-          />
-        </a-form-item>
-        <a-form-item
-          name="selectType"
-          has-feedback
-          :rules="[{ required: true, message: 'Please select your country!' }]"
-        >
-          <a-select
-            v-model:value="formState.selectType"
-            placeholder="Выберите тип анализа"
-            @change="updateFilters"
-          >
-            <a-select-option value="dynamicsFlight"
-              >Определение динамики бронирований рейса в разрезе классов
-              бронирования по вылетевшим рейсам. (2017-2019
-              год)</a-select-option
-            >
-            <a-select-option value="seasonalityDemand">
-              Определение сезонности спроса по классам бронирования, по
-              вылетевшим рейсам. (2017-2019 год)</a-select-option
-            >
-            <a-select-option value="determinationDemand">
-              Определение профилей спроса в разрезе классов бронирования, по
-              вылетевшим рейсам. (2017-2019 год)</a-select-option
-            >
-            <a-select-option value="forecastingDemand">
-              Прогнозирование спроса в разрезе классов бронирования для
-              продаваемых рейсов. (2017-2019 год)</a-select-option
-            >
-          </a-select>
-        </a-form-item>
-        <a-form-item
-          name="selectDirection"
-          has-feedback
-          :rules="[{ required: true, message: 'Please select your country!' }]"
-        >
-          <a-select
-            v-model:value="formState.selectDirection"
-            placeholder="Выберите направление рейса"
-            @change="updateFilters"
-          >
-            <a-select-option v-for="item in DIRECTIONS.directions" :key="item">
-              {{ item }}</a-select-option
-            >
-          </a-select>
-        </a-form-item>
-        <a-form-item
-          name="selectBookingClass"
-          has-feedback
-          :rules="[{ required: true, message: 'Please select your country!' }]"
-        >
-          <a-select
-            v-model:value="formState.selectBookingClass"
-            placeholder="Выберите класс бронирования"
-            @change="updateFilters"
-          >
-            <a-select-option
-              v-for="item in BOOKING_CLASSES.booking_classes"
-              :key="item"
-            >
-              {{ item }}</a-select-option
-            >
-          </a-select>
-        </a-form-item>
-        <a-form-item
-          name="flightNumbers"
-          has-feedback
-          :rules="[{ required: true, message: 'Please select your country!' }]"
-        >
-          <a-select
-            v-model:value="formState.flightNumbers"
-            placeholder="Выберите номер рейса"
-            @change="updateFilters"
-          >
-            <a-select-option
-              v-for="item in FLIGHT_NUMBERS.flight_numbers"
-              :key="item"
-            >
-              {{ item }}</a-select-option
-            >
-          </a-select>
-        </a-form-item>
-      </a-form>
+    <h2>
+      Определение динамики бронирований рейса в разрезе классов бронирования по
+      вылетевшим рейсам. (2017-2019 год)
+    </h2>
+    <div class="lct-analytics-page-info">
+      <div class="wrapper">
+        <img src="../../assets/analytics-type/1.jpg" alt="ICON" class="icon" />
+      </div>
+      <div class="wrapper info">
+        <p>
+          Реализован автоматизированный процесс расчета динамики бронирования по
+          каждому пролетевшему рейсу в разрезе каждого класса. Результаты
+          динамики бронирования представлены в виде графиков (линейные или
+          гистограммы), есть возможность управления периодом просмотра динамики
+          бронирования. Период для динамики бронирования 2017 – 2019 год
+        </p>
+        <router-link :to="{ name: 'dynamicsFlight' }">
+          <a-button type="primary">Проанализировать</a-button>
+        </router-link>
+      </div>
     </div>
-    <router-link :to="{ name: 'determinationDemand' }">
-      <button @click="requestGraph()">Запросить</button>
-    </router-link>
+    <hr />
+    <h2>
+      Определение сезонности спроса по классам бронирования, по вылетевшим
+      рейсам. (2017-2019 год)
+    </h2>
+    <div class="lct-analytics-page-info">
+      <div class="wrapper">
+        <img src="../../assets/analytics-type/2.jpg" alt="ICON" class="icon" />
+      </div>
+      <div class="wrapper info">
+        <p>
+          Реализован автоматизированный процесс расчета сезонности спроса
+          бронирования по каждому пролетевшему рейсу в разрезе каждого класса.
+          Результаты сезонности представлены в виде графиков (линейные или
+          гистограммы). Реализована возможность управлять периодом просмотра
+          сезонности бронирования. Период для сезонности бронирования 2017 –
+          2019 год.
+        </p>
+        <router-link :to="{ name: 'seasonalityDemand' }">
+          <a-button type="primary">Проанализировать</a-button>
+        </router-link>
+      </div>
+    </div>
+    <hr />
+    <h2>
+      Определение профилей спроса в разрезе классов бронирования, по вылетевшим
+      рейсам. (2017-2019 год)
+    </h2>
+    <p>
+      Определяет профиль спроса в зависимости от глубины прогнозирования для
+      разных сегментированных пассажиров. Реализован автоматизированный процесс
+      расчета профиля спроса в зависимости от глубины прогнозирования
+      бронирования по каждому пролетевшему рейсу в разрезе каждого класса.
+      Результаты профиля спроса представлены в виде графиков (линейные или
+      гистограммы). Период бронирования 2017 – 2019 год
+    </p>
+    <div class="lct-analytics-page-info">
+      <div class="wrapper">
+        <img src="../../assets/analytics-type/3.jpg" alt="ICON" class="icon" />
+      </div>
+      <div class="wrapper info">
+        <ul>
+          Реализованы возможности:
+          <li>наложения графиков от различных профилей;</li>
+          <li>
+            спроса просмотра смешанного профиля спроса управления периодом;
+          </li>
+          <li>просмотра профиля спроса бронирования.</li>
+        </ul>
+        <router-link :to="{ name: 'determinationDemand' }">
+          <a-button type="primary">Проанализировать</a-button>
+        </router-link>
+      </div>
+    </div>
+    <hr />
+    <h2>
+      Прогнозирование спроса в разрезе классов бронирования для продаваемых
+      рейсов. (2017-2019 год)
+    </h2>
+    <p>
+      Реализован автоматизированный процесс расчета прогнозного спроса
+      бронирования по каждому продаваемому рейсу в разрезе каждого класса.
+      Прогноз спроса рассчитывается для различной глубины прогнозирования
+      спроса. Результаты представлены в виде графиков (линейные или
+      гистограммы). Добавлена возможность управлять периодом просмотра прогноза
+      спроса бронирования.
+    </p>
+    <div class="lct-analytics-page-info">
+      <div class="wrapper">
+        <img src="../../assets/analytics-type/4.jpg" alt="ICON" class="icon" />
+      </div>
+      <div class="wrapper info">
+        <ul>
+          <li>
+            Период для прогнозного расчета спроса бронирования 2018 -2019 год
+            для возможности проверки прогнозов по фактическим параметрам
+            бронирований их истории бронирования (из исторических файлов).
+          </li>
+          <li>
+            Период для прогнозного расчета спроса бронирования расписание 2020
+            года, с последующей возможностью проверки прогнозов спроса
+            экспертами путем сверки с фактическим показателями бронирований из
+            фактической истории бронирования за 2020 год.
+          </li>
+        </ul>
+        <router-link :to="{ name: 'forecastingDemand' }">
+          <a-button type="primary">Проанализировать</a-button>
+        </router-link>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import { defineComponent, reactive } from "vue";
-import { mapGetters, mapActions } from "vuex";
+import { defineComponent } from "vue";
 export default defineComponent({
   name: "lct-analytics-page",
-  data() {
-    return {
-      selectedCountry: "",
-      searchTerm: "",
-      query: [],
-    };
-  },
-  methods: {
-    ...mapActions([
-      "GET_DIRECTIONS_FROM_API",
-      "GET_FLIGHT_NUMBERS_FROM_API",
-      "GET_BOOKING_CLASSES_FROM_API",
-      "GET_GRAPH_FROM_API",
-    ]),
-    requestGraph() {
-      if (!this.GRAPH.length) {
-        this.GET_GRAPH_FROM_API(this.query);
-      }
-    },
-    updateFilters() {
-      if (this.formState.selectDirection) {
-        this.query.direction = this.formState.selectDirection;
-        if (!this.FLIGHT_NUMBERS.length) {
-          this.GET_FLIGHT_NUMBERS_FROM_API(this.query.direction);
-        }
-      }
-
-      if (this.formState.flightNumbers) {
-        this.query.flight_number = this.formState.flightNumbers;
-      }
-
-      if (this.formState.selectBookingClass) {
-        this.query.booking_class = this.formState.selectBookingClass;
-      }
-
-      if (this.formState.bookingStart) {
-        this.query.booking_start = this.formState.bookingStart;
-      }
-
-      if (this.formState.bookingEnd) {
-        this.query.booking_end = this.formState.bookingEnd;
-      }
-
-      // if (this.formState.selectType) {
-      //   query.selectType = this.formState.selectType;
-      // }
-
-      this.$router.push({ path: "/analytics", query: this.query });
-    },
-  },
-  setup() {
-    const formItemLayout = {
-      labelCol: {
-        xs: {
-          span: 24,
-        },
-        sm: {
-          span: 8,
-        },
-      },
-      wrapperCol: {
-        xs: {
-          span: 24,
-        },
-        sm: {
-          span: 16,
-        },
-      },
-    };
-    const config = {
-      rules: [
-        {
-          type: "string",
-          required: true,
-          message: "Please select time!",
-        },
-      ],
-    };
-    const rangeConfig = {
-      rules: [
-        {
-          type: "array",
-          required: true,
-          message: "Please select time!",
-        },
-      ],
-    };
-    const formState = reactive({
-      "input-number": 3,
-      "checkbox-group": ["A", "B"],
-      rate: 3.5,
-    });
-    const onFinish = (values) => {
-      console.log("Success:", values, formState);
-    };
-    const onFinishFailed = (errorInfo) => {
-      console.log("Failed:", errorInfo);
-    };
-    return {
-      formState,
-      onFinish,
-      onFinishFailed,
-      formItemLayout,
-      config,
-      rangeConfig,
-    };
-  },
-  computed: {
-    ...mapGetters(["DIRECTIONS", "FLIGHT_NUMBERS", "BOOKING_CLASSES", "GRAPH"]),
-  },
-
-  mounted() {
-    if (!this.DIRECTIONS.length) {
-      this.GET_DIRECTIONS_FROM_API();
-    }
-
-    if (!this.BOOKING_CLASSES.length) {
-      this.GET_BOOKING_CLASSES_FROM_API();
-    }
-  },
 });
 </script>
 
-<style scoped>
-.dataPicker {
+<style scoped lang="scss">
+h2 {
+  font-size: 2rem;
+  margin-top: 40px;
+}
+p {
+  position: relative;
   width: 100%;
+  min-height: 1px;
+  font-size: 1rem;
+  padding-right: 30px;
+  padding-left: 30px;
+  text-align: left;
+}
+.lct-analytics-page-info {
+  display: flex;
+
+  .wrapper {
+    display: flex;
+    align-items: center;
+  }
+  .info {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  ul {
+    list-style: none;
+    border-left: 10px solid #78909c;
+    padding: 0;
+    margin-left: 30px;
+    font-size: 1rem;
+    li {
+      padding: 10px;
+    }
+    li:nth-child(odd) {
+      background: #e1f1ff;
+    }
+    li:nth-child(even) {
+      background: white;
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .wrapper {
+    width: 100%;
+  }
+  .lct-analytics-page-info {
+    display: flex;
+    flex-direction: column;
+  }
+  img {
+    width: 450px;
+  }
 }
 </style>

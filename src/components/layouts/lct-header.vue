@@ -3,7 +3,7 @@
     <div class="lct-header">
       <div>
         <router-link :to="{ name: 'mainPage' }" class="lct-header__logo">
-          <img src="../../assets/logo.png" alt="" />
+          <img src="../../assets/logo.jpg" alt="" />
         </router-link>
         <router-link :to="{ name: 'mainPage' }">RusFuture </router-link>
       </div>

@@ -4,34 +4,26 @@
       Определение сезонности спроса по классам бронирования, по вылетевшим
       рейсам. (2017-2019 год)
     </h1>
-    <router-link :to="{ name: 'analyticsPage' }">Назад </router-link>
     <apexchart
+      v-if="this.GRAPH"
       class="chart"
       type="bar"
       :options="chartOptions"
-      :series="series"
+      :series="this.GRAPH.series"
     ></apexchart>
+    <lct-analytics-form />
   </div>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
+import lctAnalyticsForm from "./lct-analytics-form.vue";
+
 export default {
   name: "lct-seasonality-demand",
+  components: { lctAnalyticsForm },
   data: function () {
     return {
-      series: [
-        {
-          name: "Website Blog",
-          type: "column",
-          data: [440, 505, 414, 671, 227, 413, 201, 352, 752, 320, 257, 160],
-        },
-        {
-          name: "Social Media",
-          type: "line",
-          data: [23, 42, 35, 27, 43, 22, 17, 31, 22, 22, 12, 16],
-        },
-      ],
       chartOptions: {
         chart: {
           height: 350,
@@ -79,6 +71,9 @@ export default {
         ],
       },
     };
+  },
+  methods: {
+    ...mapActions(["GET_GRAPH_FROM_API"]),
   },
   computed: {
     ...mapGetters(["GRAPH"]),

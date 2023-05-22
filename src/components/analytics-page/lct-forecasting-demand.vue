@@ -4,41 +4,28 @@
       Прогнозирование спроса в разрезе классов бронирования для продаваемых
       рейсов. (2018-2019 год)
     </h1>
-    <router-link :to="{ name: 'analyticsPage' }">Назад </router-link>
     <div id="chart">
       <apexchart
+        v-if="this.GRAPH"
         class="chart"
         type="bar"
         :options="chartOptions"
-        :series="series"
+        :series="this.GRAPH.series"
       ></apexchart>
     </div>
+    <lct-analytics-form />
   </div>
 </template>
 
 <script>
+import { mapGetters, mapActions } from "vuex";
+import lctAnalyticsForm from "./lct-analytics-form.vue";
+
 export default {
   name: "lct-forecasting-demand",
+  components: { lctAnalyticsForm },
   data: function () {
     return {
-      series: [
-        {
-          name: "PRODUCT A",
-          data: [44, 55, 41, 67, 22, 43],
-        },
-        {
-          name: "PRODUCT B",
-          data: [13, 23, 20, 8, 13, 27],
-        },
-        {
-          name: "PRODUCT C",
-          data: [11, 17, 15, 15, 21, 14],
-        },
-        {
-          name: "PRODUCT D",
-          data: [21, 7, 25, 13, 22, 8],
-        },
-      ],
       chartOptions: {
         chart: {
           type: "bar",
@@ -98,6 +85,12 @@ export default {
         },
       },
     };
+  },
+  methods: {
+    ...mapActions(["GET_GRAPH_FROM_API"]),
+  },
+  computed: {
+    ...mapGetters(["GRAPH"]),
   },
 };
 </script>

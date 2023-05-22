@@ -4,21 +4,23 @@
       Определение профилей спроса в разрезе классов бронирования, по вылетевшим
       рейсам. (2017-2019 год)
     </h1>
-    <router-link :to="{ name: 'analyticsPage' }">Назад </router-link>
     <apexchart
+      v-if="this.GRAPH"
       type="bar"
       class="chart"
       :options="chartOptions"
       :series="this.GRAPH.series"
     ></apexchart>
+    <lct-analytics-form />
   </div>
 </template>
 
 <script>
 import { mapGetters, mapActions } from "vuex";
-
+import lctAnalyticsForm from "./lct-analytics-form.vue";
 export default {
   name: "lct-determination-demand",
+  components: { lctAnalyticsForm },
   data: function () {
     return {
       chartOptions: {

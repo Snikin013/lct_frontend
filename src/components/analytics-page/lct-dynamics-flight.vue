@@ -4,19 +4,24 @@
       Определение динамики бронирований рейса в разрезе классов бронирования по
       вылетевшим рейсам. (2017-2019 год)
     </h1>
-    <router-link :to="{ name: 'analyticsPage' }">Назад </router-link>
     <apexchart
+      v-if="this.GRAPH"
       class="chart"
       type="bar"
       :options="chartOptions"
-      :series="series"
+      :series="this.GRAPH.series"
     ></apexchart>
+    <lct-analytics-form />
   </div>
 </template>
 
 <script>
+import { mapGetters, mapActions } from "vuex";
+import lctAnalyticsForm from "./lct-analytics-form.vue";
+
 export default {
   name: "lct-dynamic-flight",
+  components: { lctAnalyticsForm },
   data: function () {
     return {
       chartOptions: {
@@ -27,13 +32,13 @@ export default {
           categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998],
         },
       },
-      series: [
-        {
-          name: "series-1",
-          data: [30, 40, 45, 50, 49, 60, 70, 81],
-        },
-      ],
     };
+  },
+  methods: {
+    ...mapActions(["GET_GRAPH_FROM_API"]),
+  },
+  computed: {
+    ...mapGetters(["GRAPH"]),
   },
 };
 </script>

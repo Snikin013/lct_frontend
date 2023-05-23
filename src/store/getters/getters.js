@@ -11,4 +11,7 @@ export default {
   BOOKING_CLASSES(state) {
     return state.bookingClasses;
   },
+  USER_ROUTE(state) {
+    return state.userRoute;
+  },
 };

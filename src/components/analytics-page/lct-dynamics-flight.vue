@@ -8,8 +8,8 @@
       v-if="this.GRAPH"
       class="chart"
       type="bar"
-      :options="chartOptions"
-      :series="this.GRAPH.series"
+      :options="this.GRAPH.data.chart_options"
+      :series="this.GRAPH.data.series"
     ></apexchart>
     <lct-analytics-form />
   </div>
@@ -22,18 +22,6 @@ import lctAnalyticsForm from "./lct-analytics-form.vue";
 export default {
   name: "lct-dynamic-flight",
   components: { lctAnalyticsForm },
-  data: function () {
-    return {
-      chartOptions: {
-        chart: {
-          id: "vuechart-example",
-        },
-        xaxis: {
-          categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998],
-        },
-      },
-    };
-  },
   methods: {
     ...mapActions(["GET_GRAPH_FROM_API"]),
   },

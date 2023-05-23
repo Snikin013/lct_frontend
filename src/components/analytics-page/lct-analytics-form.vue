@@ -25,6 +25,14 @@
             placeholder="Конечная дата"
           />
         </a-form-item>
+        <a-form-item name="flightDate" v-bind="config">
+          <a-date-picker
+            @change="updateFilters"
+            v-model:value="formState.flightDate"
+            value-format="YYYY-MM-DD"
+            placeholder="Дата полета"
+          />
+        </a-form-item>
         <a-form-item
           name="selectDirection"
           has-feedback
@@ -54,6 +62,21 @@
               v-for="item in BOOKING_CLASSES.booking_classes"
               :key="item"
             >
+              {{ item }}</a-select-option
+            >
+          </a-select>
+        </a-form-item>
+        <a-form-item
+          name="userRoute"
+          has-feedback
+          :rules="[{ required: true, message: 'Please select your country!' }]"
+        >
+          <a-select
+            v-model:value="formState.userRoute"
+            placeholder="Выберите маршрут пользователя"
+            @change="updateFilters"
+          >
+            <a-select-option v-for="item in USER_ROUTE" :key="item">
               {{ item }}</a-select-option
             >
           </a-select>
@@ -89,12 +112,11 @@
 <script>
 import { defineComponent, reactive } from "vue";
 import { mapGetters, mapActions } from "vuex";
+
 export default defineComponent({
   name: "lct-analytics-page",
   data() {
     return {
-      selectedCountry: "",
-      searchTerm: "",
       query: [],
     };
   },
@@ -113,13 +135,24 @@ export default defineComponent({
     updateFilters() {
       if (this.formState.selectDirection) {
         this.query.direction = this.formState.selectDirection;
-        if (!this.FLIGHT_NUMBERS.length) {
-          this.GET_FLIGHT_NUMBERS_FROM_API(this.query.direction);
+      }
+
+      if (this.formState.userRoute) {
+        this.query.user_route = this.formState.userRoute;
+        if (
+          !this.FLIGHT_NUMBERS.length &&
+          this.query.direction &&
+          this.query.user_route
+        ) {
+          this.GET_FLIGHT_NUMBERS_FROM_API([
+            this.query.direction,
+            this.query.user_route,
+          ]);
         }
       }
 
-      if (this.formState.flightNumbers) {
-        this.query.flight_number = this.formState.flightNumbers;
+      if (this.formState.flightDate) {
+        this.query.flight_date = this.formState.flightDate;
       }
 
       if (this.formState.selectBookingClass) {
@@ -132,6 +165,10 @@ export default defineComponent({
 
       if (this.formState.bookingEnd) {
         this.query.booking_end = this.formState.bookingEnd;
+      }
+
+      if (this.formState.flightNumbers) {
+        this.query.flight_number = this.formState.flightNumbers;
       }
     },
   },
@@ -193,7 +230,13 @@ export default defineComponent({
     };
   },
   computed: {
-    ...mapGetters(["DIRECTIONS", "FLIGHT_NUMBERS", "BOOKING_CLASSES", "GRAPH"]),
+    ...mapGetters([
+      "DIRECTIONS",
+      "FLIGHT_NUMBERS",
+      "BOOKING_CLASSES",
+      "GRAPH",
+      "USER_ROUTE",
+    ]),
   },
 
   mounted() {
@@ -209,9 +252,6 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.dataPicker {
-  width: 100%;
-}
 .ant-picker {
   width: 100%;
 }
@@ -219,6 +259,6 @@ export default defineComponent({
   margin-right: 30px;
 }
 form {
-  margin-left: 30%;
+  margin-left: 15rem;
 }
 </style>

@@ -1,19 +1,13 @@
 <template>
   <div class="lct-forecasting-demand">
-    <h1>
-      Прогнозирование спроса в разрезе классов бронирования для продаваемых
-      рейсов. (2018-2019 год)
-    </h1>
-    <div id="chart">
-      <apexchart
-        v-if="this.GRAPH"
-        class="chart"
-        type="bar"
-        :options="this.GRAPH.data.chart_options"
-        :series="this.GRAPH.data.series"
-      ></apexchart>
-    </div>
     <lct-analytics-form />
+    <apexchart
+      v-if="this.GRAPH"
+      class="chart"
+      type="bar"
+      :options="this.GRAPH.data.chart_options"
+      :series="this.GRAPH.data.series"
+    ></apexchart>
   </div>
 </template>
 
@@ -34,6 +28,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.lct-forecasting-demand {
+  display: flex;
+  margin-top: 30px;
+}
 .chart {
   width: 70%;
   margin: 0 auto;

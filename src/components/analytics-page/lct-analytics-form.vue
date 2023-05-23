@@ -8,117 +8,110 @@
         @finish="onFinish"
         @finishFailed="onFinishFailed"
       >
-        <div class="form-part">
-          <a-form-item name="flightDate" class="form-item" v-bind="config">
-            <label for="flightDate">Дата полета:</label>
-            <a-date-picker
-              @change="updateFilters"
-              v-model:value="formState.flightDate"
-              placeholder=""
-              value-format="YYYY-MM-DD"
-              defaultPickerValue="2017-01-01"
-              :disabled-date="
-                (date) => {
-                  const year = date.year();
-                  return year < 2017 || year > 2019;
-                }
-              "
-            />
-          </a-form-item>
-          <a-form-item
-            class="form-item"
-            name="selectDirection"
-            has-feedback
-            :rules="[
-              {
-                required: true,
-                message: 'Пожалуйста, выберите направление рейса',
-              },
-            ]"
+        <a-form-item
+          class="form-item"
+          name="selectDirection"
+          has-feedback
+          :rules="[
+            {
+              required: true,
+              message: 'Пожалуйста, выберите направление рейса',
+            },
+          ]"
+        >
+          <label for="selectDirection">Направление рейса:</label>
+          <a-select
+            v-model:value="formState.selectDirection"
+            @change="updateFilters"
           >
-            <label for="selectDirection">Направление рейса:</label>
-            <a-select
-              v-model:value="formState.selectDirection"
-              @change="updateFilters"
+            <a-select-option v-for="item in DIRECTIONS.directions" :key="item">
+              {{ item }}</a-select-option
             >
-              <a-select-option
-                v-for="item in DIRECTIONS.directions"
-                :key="item"
-              >
-                {{ item }}</a-select-option
-              >
-            </a-select>
-          </a-form-item>
-          <a-form-item
-            class="form-item"
-            name="selectBookingClass"
-            has-feedback
-            :rules="[
-              {
-                required: true,
-                message: 'Пожалуйста, выберите класс бронирования!',
-              },
-            ]"
+          </a-select>
+        </a-form-item>
+        <a-form-item
+          class="form-item"
+          name="flightNumbers"
+          has-feedback
+          :rules="[
+            { required: true, message: 'Пожалуйста, выберите номер рейса!' },
+          ]"
+        >
+          <label for="flightNumbers">Номер рейса: </label>
+          <a-select
+            v-model:value="formState.flightNumbers"
+            @change="updateFilters"
           >
-            <label for="selectBookingClass">Класс бронирования:</label>
+            <a-select-option
+              v-for="item in FLIGHT_NUMBERS.flight_numbers"
+              :key="item"
+            >
+              {{ item }}</a-select-option
+            >
+          </a-select>
+        </a-form-item>
+        <a-form-item name="flightDate" class="form-item" v-bind="config">
+          <label for="flightDate">Дата полета:</label>
+          <a-date-picker
+            @change="updateFilters"
+            v-model:value="formState.flightDate"
+            placeholder=""
+            value-format="YYYY-MM-DD"
+            defaultPickerValue="2017-01-01"
+            :disabled-date="
+              (date) => {
+                const year = date.year();
+                return year < 2017 || year > 2019;
+              }
+            "
+            class="ant-select"
+          />
+        </a-form-item>
 
-            <a-select
-              v-model:value="formState.selectBookingClass"
-              @change="updateFilters"
-            >
-              <a-select-option
-                v-for="item in BOOKING_CLASSES.booking_classes"
-                :key="item"
-              >
-                {{ item }}</a-select-option
-              >
-            </a-select>
-          </a-form-item>
-        </div>
-        <div class="form-part">
-          <a-form-item name="bookingPeriod" class="form-item">
-            <label for="bookingPeriod"
-              >Количество месяцев от даты полета:
-            </label>
-            <a-input-number
-              v-model:value="formState.bookingPeriod"
-              @change="updateFilters"
-              class="ant-picker"
-              :min="1"
-              :max="12"
-            />
-          </a-form-item>
-          <a-form-item
-            class="form-item"
-            name="flightNumbers"
-            has-feedback
-            :rules="[
-              { required: true, message: 'Пожалуйста, выберите номер рейса!' },
-            ]"
+        <a-form-item
+          class="form-item"
+          name="selectBookingClass"
+          has-feedback
+          :rules="[
+            {
+              required: true,
+              message: 'Пожалуйста, выберите класс бронирования!',
+            },
+          ]"
+        >
+          <label for="selectBookingClass">Класс бронирования:</label>
+
+          <a-select
+            v-model:value="formState.selectBookingClass"
+            @change="updateFilters"
+            class="ant-select"
           >
-            <label for="flightNumbers">Номер рейса: </label>
-            <a-select
-              v-model:value="formState.flightNumbers"
-              @change="updateFilters"
+            <a-select-option
+              v-for="item in BOOKING_CLASSES.booking_classes"
+              :key="item"
             >
-              <a-select-option
-                v-for="item in FLIGHT_NUMBERS.flight_numbers"
-                :key="item"
-              >
-                {{ item }}</a-select-option
-              >
-            </a-select>
-          </a-form-item>
-        </div>
+              {{ item }}</a-select-option
+            >
+          </a-select>
+        </a-form-item>
+        <a-form-item name="bookingPeriod" class="form-item">
+          <label for="bookingPeriod">Количество месяцев от даты полета: </label>
+          <a-input-number
+            v-model:value="formData.bookingPeriod"
+            @change="updateFilters"
+            class="ant-picker ant-select"
+            :min="1"
+            :max="12"
+          />
+        </a-form-item>
       </a-form>
     </div>
-    <router-link :to="{ name: 'analyticsPage' }">
-      <a-button type="primary" class="btn">Назад</a-button>
-    </router-link>
-
     <a-button type="primary" class="btn" @click="requestGraph()"
       >Проанализировать</a-button
     >
+    <router-link :to="{ name: 'analyticsPage' }">
+      <a-button type="primary" class="btn">Назад</a-button>
+    </router-link>
   </div>
 </template>
 
@@ -131,6 +124,9 @@ export default defineComponent({
   data() {
     return {
       query: [],
+      formData: {
+        bookingPeriod: 1, // Set default value here
+      },
     };
   },
   methods: {
@@ -161,8 +157,8 @@ export default defineComponent({
         this.query.booking_class = this.formState.selectBookingClass;
       }
 
-      if (this.formState.bookingPeriod) {
-        this.query.booking_period = this.formState.bookingPeriod;
+      if (this.formData.bookingPeriod) {
+        this.query.booking_period = this.formData.bookingPeriod;
       }
 
       if (this.formState.flightNumbers) {
@@ -237,9 +233,17 @@ export default defineComponent({
 .ant-picker {
   width: 100%;
 }
+
+.lct-analytics-page {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 .btn {
-  margin-right: 30px;
+  margin-top: 15px;
   background: #02458d;
+  width: 20rem;
 }
 
 .chart {
@@ -254,10 +258,14 @@ export default defineComponent({
   &-item {
     width: 20rem;
   }
+  .ant-select {
+    width: 20rem;
+  }
 }
 
 label {
   display: flex;
   text-align: left;
+  width: 20rem;
 }
 </style>

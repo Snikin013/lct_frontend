@@ -1,9 +1,6 @@
 <template>
   <div class="lct-determination-demand">
-    <h1>
-      Определение профилей спроса в разрезе классов бронирования, по вылетевшим
-      рейсам. (2017-2019 год)
-    </h1>
+    <lct-analytics-form />
     <apexchart
       v-if="this.GRAPH"
       type="bar"
@@ -11,7 +8,6 @@
       :options="this.GRAPH.data.chart_options"
       :series="this.GRAPH.data.series"
     ></apexchart>
-    <lct-analytics-form />
   </div>
 </template>
 
@@ -31,6 +27,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.lct-determination-demand {
+  display: flex;
+  margin-top: 30px;
+}
 .chart {
   width: 70%;
   margin: 0 auto;

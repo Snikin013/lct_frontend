@@ -13,14 +13,14 @@ export default createStore({
       data: {
         series: [
           {
-            name: "Бронирование за день",
-            type: "column",
-            data: [1.1, 3, 3.1, 4, 4.1, 4.9, 6.5, 8.5],
-          },
-          {
             name: "Суммарное бронирование",
             type: "line",
-            data: [20, 29, 37, 36, 44, 45, 50, 58],
+            data: [0, 10, 19, 36, 44, 45, 50, 58],
+          },
+          {
+            name: "Бронирование за день",
+            type: "column",
+            data: [1.1, 3, 4, 1, 4.1, 6.5, 4, 10],
           },
         ],
         chart_options: {
@@ -33,10 +33,10 @@ export default createStore({
             enabled: false,
           },
           stroke: {
-            width: [1, 6, 3],
+            width: [6, 1, 3],
             curve: "straight",
           },
-          colors: ["#02458d", "#f37b09"],
+          colors: ["#f37b09", "#02458d"],
           grid: {
             borderColor: "#e7e7e7",
             row: {
@@ -70,11 +70,11 @@ export default createStore({
               },
               axisBorder: {
                 show: true,
-                color: "#02458d",
+                color: "#f37b09",
               },
               labels: {
                 style: {
-                  colors: "#02458d",
+                  colors: "#f37b09",
                 },
               },
               tooltip: {
@@ -85,15 +85,14 @@ export default createStore({
               opposite: true,
               axisTicks: {
                 show: true,
-                color: "#f37b09",
               },
               axisBorder: {
                 show: true,
-                color: "#f37b09",
+                color: "#02458d",
               },
               labels: {
                 style: {
-                  colors: "#f37b09",
+                  colors: "#02458d",
                 },
               },
             },

@@ -1,5 +1,6 @@
 <template>
   <div class="lct-dynamic-flight">
+    <lct-analytics-form />
     <apexchart
       v-if="this.GRAPH"
       class="chart"
@@ -7,7 +8,6 @@
       :options="this.GRAPH.data.chart_options"
       :series="this.GRAPH.data.series"
     ></apexchart>
-    <lct-analytics-form />
   </div>
 </template>
 
@@ -27,6 +27,10 @@ export default {
 };
 </script>
 <style scoped lang="scss">
+.lct-dynamic-flight {
+  display: flex;
+  margin-top: 30px;
+}
 .chart {
   width: 70%;
   margin: 0 auto;

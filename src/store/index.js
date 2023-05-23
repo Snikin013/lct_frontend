@@ -25,7 +25,7 @@ export default createStore({
         ],
         chart_options: {
           chart: {
-            height: 350,
+            height: 800,
             type: "line",
             stacked: false,
           },

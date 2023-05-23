@@ -11,7 +11,6 @@
         <a-form-item
           class="form-item"
           name="selectDirection"
-          has-feedback
           :rules="[
             {
               required: true,
@@ -23,6 +22,7 @@
           <a-select
             v-model:value="formState.selectDirection"
             @change="updateFilters"
+            :show-arrow="false"
           >
             <a-select-option v-for="item in DIRECTIONS.directions" :key="item">
               {{ item }}</a-select-option
@@ -32,7 +32,6 @@
         <a-form-item
           class="form-item"
           name="flightNumbers"
-          has-feedback
           :rules="[
             { required: true, message: 'Пожалуйста, выберите номер рейса!' },
           ]"
@@ -41,6 +40,7 @@
           <a-select
             v-model:value="formState.flightNumbers"
             @change="updateFilters"
+            :show-arrow="false"
           >
             <a-select-option
               v-for="item in FLIGHT_NUMBERS.flight_numbers"
@@ -71,7 +71,6 @@
         <a-form-item
           class="form-item"
           name="selectBookingClass"
-          has-feedback
           :rules="[
             {
               required: true,
@@ -85,6 +84,7 @@
             v-model:value="formState.selectBookingClass"
             @change="updateFilters"
             class="ant-select"
+            :show-arrow="false"
           >
             <a-select-option
               v-for="item in BOOKING_CLASSES.booking_classes"
@@ -125,7 +125,7 @@ export default defineComponent({
     return {
       query: [],
       formData: {
-        bookingPeriod: 1, // Set default value here
+        bookingPeriod: 1,
       },
     };
   },

@@ -32,7 +32,7 @@ export default {
   },
   GET_FLIGHT_NUMBERS_FROM_API({ commit }, params) {
     return axios(
-      `http://46.243.227.152:8000/api/v1/filters/flight_numbers/?direction=${params[0]}&user_route=${params[1]}`,
+      `http://46.243.227.152:8000/api/v1/filters/flight_numbers/?direction=${params}`,
       {
         method: "GET",
       }

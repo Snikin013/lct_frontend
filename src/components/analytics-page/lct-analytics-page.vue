@@ -17,7 +17,7 @@
           бронирования. Период для динамики бронирования 2017 – 2019 год
         </p>
         <router-link :to="{ name: 'dynamicsFlight' }">
-          <a-button type="primary">Проанализировать</a-button>
+          <a-button class="btn" type="primary">Проанализировать</a-button>
         </router-link>
       </div>
     </div>
@@ -40,7 +40,7 @@
           2019 год.
         </p>
         <router-link :to="{ name: 'seasonalityDemand' }">
-          <a-button type="primary">Проанализировать</a-button>
+          <a-button class="btn" type="primary">Проанализировать</a-button>
         </router-link>
       </div>
     </div>
@@ -71,7 +71,7 @@
           <li>просмотра профиля спроса бронирования.</li>
         </ul>
         <router-link :to="{ name: 'determinationDemand' }">
-          <a-button type="primary">Проанализировать</a-button>
+          <a-button class="btn" type="primary">Проанализировать</a-button>
         </router-link>
       </div>
     </div>
@@ -107,7 +107,7 @@
           </li>
         </ul>
         <router-link :to="{ name: 'forecastingDemand' }">
-          <a-button type="primary">Проанализировать</a-button>
+          <a-button class="btn" type="primary">Проанализировать</a-button>
         </router-link>
       </div>
     </div>
@@ -137,7 +137,9 @@ p {
 }
 .lct-analytics-page-info {
   display: flex;
-
+  .btn {
+    background: #02458d;
+  }
   .wrapper {
     display: flex;
     align-items: center;
@@ -151,7 +153,7 @@ p {
 
   ul {
     list-style: none;
-    border-left: 10px solid #78909c;
+    border-left: 10px solid #02458d;
     padding: 0;
     margin-left: 30px;
     font-size: 1rem;

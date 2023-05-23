@@ -12,7 +12,6 @@ export default createStore({
     graph: "",
     directions: [],
     flightNumbers: [],
-    userRoute: ["Динамический", "Сезонный", "Профильный", "Прогноз"],
     bookingClasses: [],
   },
   mutations,

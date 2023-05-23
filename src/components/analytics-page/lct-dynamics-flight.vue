@@ -1,9 +1,5 @@
 <template>
   <div class="lct-dynamic-flight">
-    <h1>
-      Определение динамики бронирований рейса в разрезе классов бронирования по
-      вылетевшим рейсам. (2017-2019 год)
-    </h1>
     <apexchart
       v-if="this.GRAPH"
       class="chart"

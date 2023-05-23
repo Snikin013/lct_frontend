@@ -8,35 +8,30 @@
         @finish="onFinish"
         @finishFailed="onFinishFailed"
       >
-        <a-form-item name="bookingStart" v-bind="config">
-          <a-date-picker
-            @change="updateFilters"
-            v-model:value="formState.bookingStart"
-            value-format="YYYY-MM-DD"
-            class="ant-picker"
-            placeholder="Начальная дата"
-          />
-        </a-form-item>
-        <a-form-item name="bookingEnd" v-bind="config">
-          <a-date-picker
-            @change="updateFilters"
-            v-model:value="formState.bookingEnd"
-            value-format="YYYY-MM-DD"
-            placeholder="Конечная дата"
-          />
-        </a-form-item>
         <a-form-item name="flightDate" v-bind="config">
           <a-date-picker
             @change="updateFilters"
             v-model:value="formState.flightDate"
             value-format="YYYY-MM-DD"
+            defaultPickerValue="2017-01-01"
             placeholder="Дата полета"
+            :disabled-date="
+              (date) => {
+                const year = date.year();
+                return year < 2017 || year > 2019;
+              }
+            "
           />
         </a-form-item>
         <a-form-item
           name="selectDirection"
           has-feedback
-          :rules="[{ required: true, message: 'Please select your country!' }]"
+          :rules="[
+            {
+              required: true,
+              message: 'Пожалуйста, выберите направление рейса',
+            },
+          ]"
         >
           <a-select
             v-model:value="formState.selectDirection"
@@ -51,7 +46,12 @@
         <a-form-item
           name="selectBookingClass"
           has-feedback
-          :rules="[{ required: true, message: 'Please select your country!' }]"
+          :rules="[
+            {
+              required: true,
+              message: 'Пожалуйста, выберите класс бронирования!',
+            },
+          ]"
         >
           <a-select
             v-model:value="formState.selectBookingClass"
@@ -67,24 +67,11 @@
           </a-select>
         </a-form-item>
         <a-form-item
-          name="userRoute"
-          has-feedback
-          :rules="[{ required: true, message: 'Please select your country!' }]"
-        >
-          <a-select
-            v-model:value="formState.userRoute"
-            placeholder="Выберите маршрут пользователя"
-            @change="updateFilters"
-          >
-            <a-select-option v-for="item in USER_ROUTE" :key="item">
-              {{ item }}</a-select-option
-            >
-          </a-select>
-        </a-form-item>
-        <a-form-item
           name="flightNumbers"
           has-feedback
-          :rules="[{ required: true, message: 'Please select your country!' }]"
+          :rules="[
+            { required: true, message: 'Пожалуйста, выберите номер рейса!' },
+          ]"
         >
           <a-select
             v-model:value="formState.flightNumbers"
@@ -99,13 +86,46 @@
             >
           </a-select>
         </a-form-item>
+        <a-form-item name="bookingStart">
+          <a-date-picker
+            @change="updateFilters"
+            v-model:value="formState.bookingStart"
+            value-format="YYYY-MM-DD"
+            defaultPickerValue="2017-01-01"
+            :disabled-date="
+              (date) => {
+                const year = date.year();
+                return year < 2017 || year > 2019;
+              }
+            "
+            class="ant-picker"
+            placeholder="Начальная дата"
+          />
+        </a-form-item>
+        <a-form-item name="bookingEnd">
+          <a-date-picker
+            @change="updateFilters"
+            v-model:value="formState.bookingEnd"
+            value-format="YYYY-MM-DD"
+            defaultPickerValue="2017-01-01"
+            placeholder="Конечная дата"
+            :disabled-date="
+              (date) => {
+                const year = date.year();
+                return year < 2017 || year > 2019;
+              }
+            "
+          />
+        </a-form-item>
       </a-form>
     </div>
     <router-link :to="{ name: 'analyticsPage' }">
       <a-button type="primary" class="btn">Назад</a-button>
     </router-link>
 
-    <a-button type="primary" @click="requestGraph()">Проанализировать</a-button>
+    <a-button type="primary" class="btn" @click="requestGraph()"
+      >Проанализировать</a-button
+    >
   </div>
 </template>
 
@@ -135,19 +155,8 @@ export default defineComponent({
     updateFilters() {
       if (this.formState.selectDirection) {
         this.query.direction = this.formState.selectDirection;
-      }
-
-      if (this.formState.userRoute) {
-        this.query.user_route = this.formState.userRoute;
-        if (
-          !this.FLIGHT_NUMBERS.length &&
-          this.query.direction &&
-          this.query.user_route
-        ) {
-          this.GET_FLIGHT_NUMBERS_FROM_API([
-            this.query.direction,
-            this.query.user_route,
-          ]);
+        if (!this.FLIGHT_NUMBERS.length) {
+          this.GET_FLIGHT_NUMBERS_FROM_API(this.query.direction);
         }
       }
 
@@ -196,16 +205,7 @@ export default defineComponent({
         {
           type: "string",
           required: true,
-          message: "Please select time!",
-        },
-      ],
-    };
-    const rangeConfig = {
-      rules: [
-        {
-          type: "array",
-          required: true,
-          message: "Please select time!",
+          message: "Пожалуйста, выберете дату полета!",
         },
       ],
     };
@@ -226,17 +226,10 @@ export default defineComponent({
       onFinishFailed,
       formItemLayout,
       config,
-      rangeConfig,
     };
   },
   computed: {
-    ...mapGetters([
-      "DIRECTIONS",
-      "FLIGHT_NUMBERS",
-      "BOOKING_CLASSES",
-      "GRAPH",
-      "USER_ROUTE",
-    ]),
+    ...mapGetters(["DIRECTIONS", "FLIGHT_NUMBERS", "BOOKING_CLASSES", "GRAPH"]),
   },
 
   mounted() {
@@ -257,6 +250,7 @@ export default defineComponent({
 }
 .btn {
   margin-right: 30px;
+  background: #02458d;
 }
 form {
   margin-left: 15rem;

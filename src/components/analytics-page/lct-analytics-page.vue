@@ -16,6 +16,7 @@
           гистограммы), есть возможность управления периодом просмотра динамики
           бронирования. Период для динамики бронирования 2017 – 2019 год
         </p>
+
         <router-link :to="{ name: 'dynamicsFlight' }">
           <a-button class="btn" type="primary">Проанализировать</a-button>
         </router-link>
@@ -138,7 +139,16 @@ p {
 .lct-analytics-page-info {
   display: flex;
   .btn {
-    background: #02458d;
+    border-radius: 10px;
+    background-color: #02458d;
+    border-color: #02458d;
+  }
+
+  .btn-revert {
+    border-radius: 15px;
+    background: white;
+    color: #02458d;
+    border-color: white;
   }
   .wrapper {
     display: flex;

@@ -245,7 +245,18 @@ export default defineComponent({
   background: #02458d;
   width: 20rem;
 }
+.btn {
+  border-radius: 10px;
+  background-color: #02458d;
+  border-color: #02458d;
+}
 
+.btn-revert {
+  border-radius: 15px;
+  background: white;
+  color: #02458d;
+  border-color: white;
+}
 .chart {
   width: 95%;
 }

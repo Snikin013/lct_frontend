@@ -75,7 +75,7 @@
       </div>
       <div class="wrapper info">
         <ul>
-          Реализованы возможности:
+          <h4>Реализованы возможности:</h4>
           <li>наложения графиков от различных профилей;</li>
           <li>
             спроса просмотра смешанного профиля спроса управления периодом;
@@ -184,9 +184,16 @@ p {
     margin-left: 30px;
     font-size: 1rem;
     font-size: 20px;
+    text-align: left;
+
+    h4 {
+      margin-bottom: 0;
+      padding-left: 10px;
+    }
 
     li {
       padding: 10px;
+      text-align: left;
       font-size: 16px;
     }
 

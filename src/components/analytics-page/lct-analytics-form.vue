@@ -2,14 +2,13 @@
   <div class="lct-analytics-page">
     <div class="form">
       <a-form
-        :model="formState"
         name="time_related_controls"
+        :model="formState"
         v-bind="formItemLayout"
         @finish="onFinish"
         @finishFailed="onFinishFailed"
       >
         <a-form-item
-          class="form-item"
           name="selectDirection"
           :rules="[
             {
@@ -17,30 +16,32 @@
               message: 'Пожалуйста, выберите направление рейса',
             },
           ]"
+          class="form-item"
         >
           <label for="selectDirection">Направление рейса:</label>
           <a-select
             v-model:value="formState.selectDirection"
-            @change="updateFilters"
             :show-arrow="false"
+            @change="updateFilters"
           >
             <a-select-option v-for="item in DIRECTIONS.directions" :key="item">
               {{ item }}</a-select-option
             >
           </a-select>
         </a-form-item>
+
         <a-form-item
-          class="form-item"
           name="flightNumbers"
           :rules="[
             { required: true, message: 'Пожалуйста, выберите номер рейса!' },
           ]"
+          class="form-item"
         >
           <label for="flightNumbers">Номер рейса: </label>
           <a-select
             v-model:value="formState.flightNumbers"
-            @change="updateFilters"
             :show-arrow="false"
+            @change="updateFilters"
           >
             <a-select-option
               v-for="item in FLIGHT_NUMBERS.flight_numbers"
@@ -50,12 +51,11 @@
             >
           </a-select>
         </a-form-item>
-        <a-form-item name="flightDate" class="form-item" v-bind="config">
+
+        <a-form-item name="flightDate" v-bind="config" class="form-item">
           <label for="flightDate">Дата полета:</label>
           <a-date-picker
-            @change="updateFilters"
             v-model:value="formState.flightDate"
-            placeholder=""
             value-format="YYYY-MM-DD"
             defaultPickerValue="2017-01-01"
             :disabled-date="
@@ -64,12 +64,13 @@
                 return year < 2017 || year > 2019;
               }
             "
+            @change="updateFilters"
+            placeholder=""
             class="ant-select"
           />
         </a-form-item>
 
         <a-form-item
-          class="form-item"
           name="selectBookingClass"
           :rules="[
             {
@@ -77,14 +78,14 @@
               message: 'Пожалуйста, выберите класс бронирования!',
             },
           ]"
+          class="form-item"
         >
           <label for="selectBookingClass">Класс бронирования:</label>
-
           <a-select
             v-model:value="formState.selectBookingClass"
+            :show-arrow="false"
             @change="updateFilters"
             class="ant-select"
-            :show-arrow="false"
           >
             <a-select-option
               v-for="item in BOOKING_CLASSES.booking_classes"
@@ -94,19 +95,20 @@
             >
           </a-select>
         </a-form-item>
+
         <a-form-item name="bookingPeriod" class="form-item">
           <label for="bookingPeriod">Количество месяцев от даты полета: </label>
           <a-input-number
             v-model:value="formData.bookingPeriod"
-            @change="updateFilters"
-            class="ant-picker ant-select"
             :min="1"
             :max="12"
+            @change="updateFilters"
+            class="ant-picker ant-select"
           />
         </a-form-item>
       </a-form>
     </div>
-    <a-button type="primary" class="btn" @click="requestGraph()"
+    <a-button type="primary" @click="requestGraph()" class="btn"
       >Проанализировать</a-button
     >
     <router-link :to="{ name: 'analyticsPage' }">
@@ -242,33 +244,34 @@ export default defineComponent({
 
 .btn {
   margin-top: 15px;
-  background: #02458d;
   width: 20rem;
-}
-.btn {
   border-radius: 10px;
   background-color: #02458d;
   border-color: #02458d;
+
+  &-revert {
+    border-radius: 10px;
+    background: white;
+    color: #02458d;
+    border-color: white;
+  }
 }
 
-.btn-revert {
-  border-radius: 15px;
-  background: white;
-  color: #02458d;
-  border-color: white;
-}
 .chart {
   width: 95%;
 }
+
 .form {
   &-part {
     display: flex;
     margin-left: 7rem;
     align-items: flex-end;
   }
+
   &-item {
     width: 20rem;
   }
+
   .ant-select {
     width: 20rem;
   }

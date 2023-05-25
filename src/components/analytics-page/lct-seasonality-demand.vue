@@ -3,10 +3,10 @@
     <lct-analytics-form />
     <apexchart
       v-if="this.GRAPH"
-      class="chart"
       type="bar"
       :options="this.GRAPH.data.chart_options"
       :series="this.GRAPH.data.series"
+      class="chart"
     ></apexchart>
   </div>
 </template>
@@ -32,6 +32,7 @@ export default {
   display: flex;
   margin-top: 30px;
 }
+
 .chart {
   width: 70%;
   margin: 0 auto;

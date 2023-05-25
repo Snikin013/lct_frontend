@@ -41,43 +41,51 @@ export default {
   width: 100%;
   top: 0;
   left: 0;
+
+  &__info {
+    margin-right: 30px;
+  }
+
+  &__logo {
+    margin-right: 30px;
+  }
+
   .lct-left {
     display: flex;
     align-items: center;
+
     h2 {
       margin: 0;
     }
   }
-  &__info {
-    margin-right: 30px;
-  }
-  &__logo {
-    margin-right: 30px;
-  }
+
   img {
     width: 50px;
     border-radius: 50%;
   }
+
   .btn {
     border-radius: 10px;
     background-color: #02458d;
     border-color: #02458d;
-  }
 
-  .btn-revert {
-    border-radius: 15px;
-    background: white;
-    color: #02458d;
-    border-color: white;
-    border: 1px solid #02458d;
+    &-revert {
+      border-radius: 10px;
+      background: white;
+      color: #02458d;
+      border-color: white;
+      border: 1px solid #02458d;
+    }
   }
 }
+
 @media (max-width: 1000px) {
   .lct-left {
     h2 {
       display: none;
     }
   }
+
   .lct-right {
     display: flex;
   }

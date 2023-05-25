@@ -6,7 +6,11 @@
     </h2>
     <div class="lct-analytics-page-info">
       <div class="wrapper">
-        <img src="../../assets/analytics-type/1.jpg" alt="ICON" class="icon" />
+        <img
+          src="../../assets/analytics-type/1.jpg"
+          alt="Определение динамики бронирований"
+          class="icon"
+        />
       </div>
       <div class="wrapper info">
         <p>
@@ -16,9 +20,8 @@
           гистограммы), есть возможность управления периодом просмотра динамики
           бронирования. Период для динамики бронирования 2017 – 2019 год
         </p>
-
         <router-link :to="{ name: 'dynamicsFlight' }">
-          <a-button class="btn" type="primary">Проанализировать</a-button>
+          <a-button type="primary" class="btn">Проанализировать</a-button>
         </router-link>
       </div>
     </div>
@@ -29,7 +32,11 @@
     </h2>
     <div class="lct-analytics-page-info">
       <div class="wrapper">
-        <img src="../../assets/analytics-type/2.jpg" alt="ICON" class="icon" />
+        <img
+          src="../../assets/analytics-type/2.jpg"
+          alt="Определение сезонности спроса"
+          class="icon"
+        />
       </div>
       <div class="wrapper info">
         <p>
@@ -41,7 +48,7 @@
           2019 год.
         </p>
         <router-link :to="{ name: 'seasonalityDemand' }">
-          <a-button class="btn" type="primary">Проанализировать</a-button>
+          <a-button type="primary" class="btn">Проанализировать</a-button>
         </router-link>
       </div>
     </div>
@@ -60,7 +67,11 @@
     </p>
     <div class="lct-analytics-page-info">
       <div class="wrapper">
-        <img src="../../assets/analytics-type/3.jpg" alt="ICON" class="icon" />
+        <img
+          src="../../assets/analytics-type/3.jpg"
+          alt="Определение профилей спроса в разрезе классов бронирования"
+          class="icon"
+        />
       </div>
       <div class="wrapper info">
         <ul>
@@ -72,7 +83,7 @@
           <li>просмотра профиля спроса бронирования.</li>
         </ul>
         <router-link :to="{ name: 'determinationDemand' }">
-          <a-button class="btn" type="primary">Проанализировать</a-button>
+          <a-button type="primary" class="btn">Проанализировать</a-button>
         </router-link>
       </div>
     </div>
@@ -108,7 +119,7 @@
           </li>
         </ul>
         <router-link :to="{ name: 'forecastingDemand' }">
-          <a-button class="btn" type="primary">Проанализировать</a-button>
+          <a-button type="primary" class="btn">Проанализировать</a-button>
         </router-link>
       </div>
     </div>
@@ -127,6 +138,7 @@ h2 {
   font-size: 2rem;
   margin-top: 40px;
 }
+
 p {
   position: relative;
   width: 100%;
@@ -136,24 +148,27 @@ p {
   padding-left: 30px;
   text-align: left;
 }
+
 .lct-analytics-page-info {
   display: flex;
   .btn {
     border-radius: 10px;
     background-color: #02458d;
     border-color: #02458d;
+
+    &-revert {
+      border-radius: 10px;
+      background: white;
+      color: #02458d;
+      border-color: white;
+    }
   }
 
-  .btn-revert {
-    border-radius: 15px;
-    background: white;
-    color: #02458d;
-    border-color: white;
-  }
   .wrapper {
     display: flex;
     align-items: center;
   }
+
   .info {
     display: flex;
     align-items: center;
@@ -167,12 +182,15 @@ p {
     padding: 0;
     margin-left: 30px;
     font-size: 1rem;
+
     li {
       padding: 10px;
     }
+
     li:nth-child(odd) {
       background: #e1f1ff;
     }
+
     li:nth-child(even) {
       background: white;
     }

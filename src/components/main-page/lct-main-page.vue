@@ -21,15 +21,20 @@
       </div>
       <div class="lct-main-page__predict__photos">
         <div class="outer">
-          <img src="../../assets/main-page/plane.jpg" class="img" alt="" />
+          <img
+            src="../../assets/main-page/plane.jpg"
+            alt="Авиакомпания"
+            class="img"
+          />
           <img
             src="../../assets/main-page/column.jpg"
-            alt=""
+            alt="Аналитика авиарейсов"
             class="img inner inner-bs"
           />
         </div>
       </div>
     </section>
+
     <section class="lct-info">
       <div class="service-info">
         <div id="triangle-right"></div>
@@ -56,22 +61,26 @@
         </h2>
       </div>
     </section>
+
     <section class="lct-main-page__predict lct-last">
       <div
         class="lct-main-page__predict__photos lct-main-page__predict__photos-last"
       >
         <div class="outer">
-          <img src="../../assets/main-page/airplane.jpg" class="img" alt="" />
+          <img
+            src="../../assets/main-page/airplane.jpg"
+            alt="Купить билет на самолет"
+            class="img"
+          />
           <img
             src="../../assets/main-page/chart.jpg"
-            alt=""
+            alt="Аналитика покупки билетов авиаресов"
             class="img inner-left inner-bs"
           />
         </div>
       </div>
       <div class="lct-main-page__predict__info">
         <h1>РЕШАЕТ СЛЕДУЮЩИЕ ЗАДАЧИ:</h1>
-
         <ul>
           <li>
             Определение динамики бронирований рейса в разрезе классов
@@ -90,7 +99,6 @@
             продаваемых рейсов.
           </li>
         </ul>
-
         <router-link :to="{ name: 'analyticsPage' }">
           <a-button type="primary" class="btn btn-analytic"
             >Проанализировать</a-button
@@ -98,10 +106,11 @@
         </router-link>
       </div>
     </section>
+
     <img
       class="finish-img"
       src="../../assets/main-page/plane-large.svg"
-      alt=""
+      alt="Самолеты Аэрофлот"
     />
   </div>
 </template>
@@ -117,9 +126,11 @@ export default {
   display: flex;
   flex-direction: column;
 }
+
 .inner-bs {
   box-shadow: 0px 15px 15px 3px rgba(0, 0, 0, 0.3);
 }
+
 section {
   margin-top: 100px;
   margin-bottom: 220px;
@@ -130,25 +141,29 @@ section {
   .outer {
     position: relative;
   }
+
   .img {
     width: 400px;
     border-radius: 50px;
     border: 5px solid #02458d;
   }
+
   .inner {
     position: absolute;
     top: 250px;
     right: 250px;
     width: 250px;
     height: 250px;
+
+    &-left {
+      position: absolute;
+      top: 250px;
+      left: 250px;
+      width: 250px;
+      height: 250px;
+    }
   }
-  .inner-left {
-    position: absolute;
-    top: 250px;
-    left: 250px;
-    width: 250px;
-    height: 250px;
-  }
+
   .service-info {
     display: flex;
     border-radius: 30px;
@@ -157,10 +172,12 @@ section {
     padding: 50px 180px 250px 200px;
     font-size: 30px;
     text-align: left;
+
     &-header {
       color: white;
       font-size: 60px;
     }
+
     #triangle-right {
       width: 0;
       height: 0;
@@ -170,12 +187,14 @@ section {
       border-bottom: 50px solid transparent;
     }
   }
+
   .service-analytics {
     padding: 40px 80px;
     border-radius: 30px;
     border: 4px solid white;
     background: #f6f8fe;
     margin: -210px 100px 50px 100px;
+
     &-header {
       font-size: 22px;
       text-align: left;
@@ -184,27 +203,34 @@ section {
     }
   }
 }
+
 h1 {
   font-size: 30px;
 }
+
 p {
   font-size: 15px;
 }
+
 li {
   font-size: 15px;
 }
+
 section:first-child {
   margin-top: 30px;
 }
+
 section.lct-info {
   margin-bottom: 30px;
 }
+
 section.lct-last {
   margin-bottom: 150px;
   h2 {
     font-size: 30px;
   }
 }
+
 .lct-main-page {
   &__predict {
     &__info {

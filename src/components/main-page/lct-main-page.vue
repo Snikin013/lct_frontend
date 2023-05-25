@@ -1,7 +1,7 @@
 <template>
   <div class="lct-main-page">
     <section class="lct-main-page__predict">
-      <div class="lct-main-page__predict__info">
+      <div class="lct-main-page__predict-info">
         <h1>
           РЕКОМЕНДАТЕЛЬНЫЙ СЕРВИС ДИНАМИЧЕСКОГО ПРОГНОЗИРОВАНИЯ СПРОСА НА
           АВИАРЕЙСЫ
@@ -19,7 +19,7 @@
           >
         </router-link>
       </div>
-      <div class="lct-main-page__predict__photos">
+      <div class="lct-main-page__predict-photos">
         <div class="outer">
           <img
             src="../../assets/main-page/plane.jpg"
@@ -64,7 +64,7 @@
 
     <section class="lct-main-page__predict lct-last">
       <div
-        class="lct-main-page__predict__photos lct-main-page__predict__photos-last"
+        class="lct-main-page__predict-photos lct-main-page__predict-photos-last"
       >
         <div class="outer">
           <img
@@ -79,7 +79,7 @@
           />
         </div>
       </div>
-      <div class="lct-main-page__predict__info">
+      <div class="lct-main-page__predict-info">
         <h1>РЕШАЕТ СЛЕДУЮЩИЕ ЗАДАЧИ:</h1>
         <ul>
           <li>
@@ -106,7 +106,6 @@
         </router-link>
       </div>
     </section>
-
     <img
       class="finish-img"
       src="../../assets/main-page/plane-large.svg"
@@ -233,7 +232,7 @@ section.lct-last {
 
 .lct-main-page {
   &__predict {
-    &__info {
+    &-info {
       max-width: 450px;
       text-align: left;
     }
@@ -274,17 +273,21 @@ section.lct-last {
         font-size: 20px;
       }
     }
+
     .img {
       width: 350px;
     }
   }
-  .lct-main-page__predict__photos {
+
+  .lct-main-page__predict-photos {
     margin-top: 30px;
     margin-bottom: 30px;
   }
-  .lct-main-page__predict__photos-last {
+
+  .lct-main-page__predict-photos-last {
     margin-top: 0;
   }
+
   #triangle-right {
     display: none;
   }
@@ -292,9 +295,11 @@ section.lct-last {
   .inner-bs {
     display: none;
   }
+
   .finish-img {
     max-width: 350px;
   }
+
   section.lct-last {
     margin-bottom: 40px;
   }

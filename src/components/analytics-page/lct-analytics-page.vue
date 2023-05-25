@@ -179,7 +179,7 @@ p {
   }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
   .info {
     display: flex;
     flex-direction: column;
@@ -193,7 +193,7 @@ p {
     flex-direction: column;
   }
   img {
-    width: 450px;
+    width: 400px;
   }
 }
 </style>

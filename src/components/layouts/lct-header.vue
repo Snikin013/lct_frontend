@@ -14,7 +14,7 @@
         <h2>- ПРОАНАЛИЗИРУЙ СВОЙ ПУТЬ!</h2>
       </div>
 
-      <div>
+      <div class="lct-right">
         <router-link :to="{ name: 'mainPage' }" class="lct-header__info">
           <a-button type="primary" class="btn btn-revert">Главная</a-button>
         </router-link>
@@ -70,6 +70,16 @@ export default {
     color: #02458d;
     border-color: white;
     border: 1px solid #02458d;
+  }
+}
+@media (max-width: 1000px) {
+  .lct-left {
+    h2 {
+      display: none;
+    }
+  }
+  .lct-right {
+    display: flex;
   }
 }
 </style>

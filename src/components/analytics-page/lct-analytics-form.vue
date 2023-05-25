@@ -279,4 +279,12 @@ label {
   text-align: left;
   width: 20rem;
 }
+
+@media (max-width: 1000px) {
+  .lct-analytics-page {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+}
 </style>

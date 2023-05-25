@@ -36,4 +36,11 @@ export default {
   width: 70%;
   margin: 0 auto;
 }
+
+@media (max-width: 1000px) {
+  .lct-forecasting-demand {
+    display: flex;
+    flex-direction: column;
+  }
+}
 </style>

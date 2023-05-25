@@ -57,7 +57,9 @@
       </div>
     </section>
     <section class="lct-main-page__predict lct-last">
-      <div class="lct-main-page__predict__photos">
+      <div
+        class="lct-main-page__predict__photos lct-main-page__predict__photos-last"
+      >
         <div class="outer">
           <img src="../../assets/main-page/airplane.jpg" class="img" alt="" />
           <img
@@ -96,7 +98,11 @@
         </router-link>
       </div>
     </section>
-    <img src="../../assets/main-page/plane-large.svg" alt="" />
+    <img
+      class="finish-img"
+      src="../../assets/main-page/plane-large.svg"
+      alt=""
+    />
   </div>
 </template>
 
@@ -120,6 +126,7 @@ section {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   .outer {
     position: relative;
   }
@@ -226,5 +233,44 @@ section.lct-last {
   align-items: center;
   padding: 24px 30px;
   font-size: 20px;
+}
+@media (max-width: 1000px) {
+  section {
+    display: flex;
+    flex-direction: column;
+    margin: 0 30px;
+
+    .service-info {
+      max-width: 350px;
+      padding: 25px 36px 25px 25px;
+      font-size: 12px;
+      &-header {
+        font-size: 20px;
+      }
+    }
+    .img {
+      width: 350px;
+    }
+  }
+  .lct-main-page__predict__photos {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  .lct-main-page__predict__photos-last {
+    margin-top: 0;
+  }
+  #triangle-right {
+    display: none;
+  }
+
+  .inner-bs {
+    display: none;
+  }
+  .finish-img {
+    max-width: 350px;
+  }
+  section.lct-last {
+    margin-bottom: 40px;
+  }
 }
 </style>

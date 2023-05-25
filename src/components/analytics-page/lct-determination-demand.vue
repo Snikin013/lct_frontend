@@ -35,4 +35,11 @@ export default {
   width: 70%;
   margin: 0 auto;
 }
+
+@media (max-width: 1000px) {
+  .lct-determination-demand {
+    display: flex;
+    flex-direction: column;
+  }
+}
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="lct-dynamic-flight">
-    <lct-analytics-form />
+    <lct-analytics-form :link="`booking-dynamics`" />
     <apexchart
       v-if="this.GRAPH"
       type="bar"

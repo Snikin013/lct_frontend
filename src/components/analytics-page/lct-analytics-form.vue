@@ -29,7 +29,6 @@
             >
           </a-select>
         </a-form-item>
-
         <a-form-item
           name="flightNumbers"
           :rules="[
@@ -51,8 +50,12 @@
             >
           </a-select>
         </a-form-item>
-
-        <a-form-item name="flightDate" v-bind="config" class="form-item">
+        <a-form-item
+          name="flightDate"
+          v-bind="config"
+          v-if="showFlightDate"
+          class="form-item"
+        >
           <label for="flightDate">Дата полета:</label>
           <a-date-picker
             v-model:value="formState.flightDate"
@@ -69,7 +72,6 @@
             class="ant-select"
           />
         </a-form-item>
-
         <a-form-item
           name="selectBookingClass"
           :rules="[
@@ -95,7 +97,6 @@
             >
           </a-select>
         </a-form-item>
-
         <a-form-item name="bookingPeriod" class="form-item">
           <label for="bookingPeriod">Количество месяцев от даты полета: </label>
           <a-input-number
@@ -131,6 +132,15 @@ export default defineComponent({
       },
     };
   },
+  props: {
+    showFlightDate: {
+      type: Boolean,
+      default: true,
+    },
+    link: {
+      type: String,
+    },
+  },
   methods: {
     ...mapActions([
       "GET_DIRECTIONS_FROM_API",
@@ -140,6 +150,7 @@ export default defineComponent({
     ]),
     requestGraph() {
       if (!this.GRAPH.length) {
+        this.query.link = this.link;
         this.GET_GRAPH_FROM_API(this.query);
       }
     },

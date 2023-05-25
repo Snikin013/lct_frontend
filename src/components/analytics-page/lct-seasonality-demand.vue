@@ -1,6 +1,6 @@
 <template>
   <div class="lct-seasonality-demand">
-    <lct-analytics-form />
+    <lct-analytics-form :showFlightDate="false" :link="`seasonality`" />
     <apexchart
       v-if="this.GRAPH"
       type="bar"
@@ -19,7 +19,7 @@ export default {
   name: "lct-seasonality-demand",
   components: { lctAnalyticsForm },
   methods: {
-    ...mapActions(["GET_GRAPH_FROM_API"]),
+    ...mapActions(["GET_GRAPH_SEASONALITY_FROM_API"]),
   },
   computed: {
     ...mapGetters(["GRAPH"]),

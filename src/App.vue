@@ -28,4 +28,10 @@ export default {
   max-width: 1100px;
   margin: 0 auto;
 }
+p {
+  font-family: "Roboto", sans-serif;
+}
+li {
+  font-family: "Roboto", sans-serif;
+}
 </style>

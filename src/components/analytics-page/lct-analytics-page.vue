@@ -151,6 +151,7 @@ p {
 
 .lct-analytics-page-info {
   display: flex;
+
   .btn {
     border-radius: 10px;
     background-color: #02458d;
@@ -182,9 +183,11 @@ p {
     padding: 0;
     margin-left: 30px;
     font-size: 1rem;
+    font-size: 20px;
 
     li {
       padding: 10px;
+      font-size: 16px;
     }
 
     li:nth-child(odd) {

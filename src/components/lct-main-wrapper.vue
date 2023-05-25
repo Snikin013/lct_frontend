@@ -5,7 +5,6 @@
     <keep-alive>
       <router-view></router-view>
     </keep-alive>
-    <hr />
     <lctFooter />
   </div>
 </template>

@@ -1,11 +1,13 @@
 <template>
   <div class="lct-main-page">
+    <h1>ПРОАНАЛИЗИРУЙ СВОЙ ПУТЬ!</h1>
+
     <section class="lct-main-page__predict">
       <div class="lct-main-page__predict-info">
-        <h1>
+        <h3>
           РЕКОМЕНДАТЕЛЬНЫЙ СЕРВИС ДИНАМИЧЕСКОГО ПРОГНОЗИРОВАНИЯ СПРОСА НА
           АВИАРЕЙСЫ
-        </h1>
+        </h3>
         <p>
           Сервис для прогнозирования спроса на авиарейсы, учитывающий динамику
           бронирования, сезонность и внешние факторы. Система управления
@@ -13,11 +15,6 @@
           услуг пассажирских перевозок с использованием технологии определения
           оптимальных объемов продаж по классам бронирования
         </p>
-        <router-link :to="{ name: 'analyticsPage' }">
-          <a-button type="primary" class="btn btn-analytic"
-            >Проанализировать</a-button
-          >
-        </router-link>
       </div>
       <div class="lct-main-page__predict-photos">
         <div class="outer">
@@ -34,35 +31,7 @@
         </div>
       </div>
     </section>
-
-    <section class="lct-info">
-      <div class="service-info">
-        <div id="triangle-right"></div>
-        <div>
-          <h2 class="service-info-header">АКТУАЛЬНОСТЬ ЗАДАЧИ</h2>
-          <p>
-            Автоматизированный автоматический процесс прогнозирования спроса
-            авиаперевозки в разрезе классов бронирования должен увеличить
-            эффективность процесса управления оптимизацией ценообразования
-            услуги авиационной перевозки. Процесс прогнозирования спроса
-            является составной частью целевого процесса управления доходами
-            авиакомпании от оказания услуг авиаперевозок. Процесс
-            прогнозирования спроса авиаперевозки входит составной частью в
-            систему управления доходами.
-          </p>
-        </div>
-      </div>
-      <div class="service-analytics inner-bs">
-        <h2 class="service-analytics-header">
-          Система управления доходами предназначена для увеличения доходов
-          авиакомпании от продажи услуг пассажирских перевозок с использованием
-          технологии определения оптимальных объемов продаж по классам
-          бронирования
-        </h2>
-      </div>
-    </section>
-
-    <section class="lct-main-page__predict lct-last">
+    <section class="lct-main-page__predict">
       <div
         class="lct-main-page__predict-photos lct-main-page__predict-photos-last"
       >
@@ -80,7 +49,7 @@
         </div>
       </div>
       <div class="lct-main-page__predict-info">
-        <h1>РЕШАЕТ СЛЕДУЮЩИЕ ЗАДАЧИ:</h1>
+        <h1>Решает следующие задачи:</h1>
         <ul>
           <li>
             Определение динамики бронирований рейса в разрезе классов
@@ -106,6 +75,67 @@
         </router-link>
       </div>
     </section>
+    <section class="lct-info">
+      <div class="service-info">
+        <div>
+          <h1 class="service-info-header">АКТУАЛЬНОСТЬ ЗАДАЧИ</h1>
+          <p>
+            Автоматизированный автоматический процесс прогнозирования спроса
+            авиаперевозки в разрезе классов бронирования должен увеличить
+            эффективность процесса управления оптимизацией ценообразования
+            услуги авиационной перевозки. Процесс прогнозирования спроса
+            является составной частью целевого процесса управления доходами
+            авиакомпании от оказания услуг авиаперевозок. Процесс
+            прогнозирования спроса авиаперевозки входит составной частью в
+            систему управления доходами.
+          </p>
+        </div>
+      </div>
+      <div class="service-analytics inner-bs">
+        <p class="service-analytics-header">
+          Система управления доходами предназначена для увеличения доходов
+          авиакомпании от продажи услуг пассажирских перевозок с использованием
+          технологии определения оптимальных объемов продаж по классам
+          бронирования
+        </p>
+      </div>
+    </section>
+    <section class="lct-main-page__predict lct-last-section">
+      <div class="lct-main-page__predict-info">
+        <h1>Преимущества сервиса:</h1>
+        <ul>
+          <li>
+            Увеличение точности прогнозирования спроса на авиарейсы, что
+            позволяет более эффективно управлять заполненностью рейсов и
+            оптимизировать расписание полетов;
+          </li>
+          <li>
+            Снижение затрат на маркетинг и рекламу благодаря более точной оценке
+            потребностей клиентов;
+          </li>
+          <li>
+            Предоставление возможности быстро адаптироваться к изменениям в
+            спросе, таким как сезонные колебания или неожиданные события
+            (например, пандемия).
+          </li>
+        </ul>
+        <router-link :to="{ name: 'analyticsPage' }">
+          <a-button type="primary" class="btn btn-analytic"
+            >Проанализировать</a-button
+          >
+        </router-link>
+      </div>
+      <div class="lct-main-page__predict-photos">
+        <div class="outer">
+          <img
+            src="../../assets/main-page/windowPlane.jpg"
+            alt="Купить билет на самолет"
+            class="img"
+          />
+        </div>
+      </div>
+    </section>
+
     <img
       class="finish-img"
       src="../../assets/main-page/plane-large.svg"
@@ -144,7 +174,6 @@ section {
   .img {
     width: 400px;
     border-radius: 50px;
-    border: 5px solid #02458d;
   }
 
   .inner {
@@ -176,15 +205,6 @@ section {
       color: white;
       font-size: 60px;
     }
-
-    #triangle-right {
-      width: 0;
-      height: 0;
-      margin-right: 40px;
-      border-top: 50px solid transparent;
-      border-left: 100px solid white;
-      border-bottom: 50px solid transparent;
-    }
   }
 
   .service-analytics {
@@ -199,20 +219,37 @@ section {
       text-align: left;
       color: #02458d;
       line-height: 1;
+      margin: 0;
     }
   }
 }
 
 h1 {
+  font-size: 40px;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+h2 {
   font-size: 30px;
 }
 
-p {
-  font-size: 15px;
+h3 {
+  font-size: 24px;
 }
 
+p {
+  font-size: 18px;
+  margin-bottom: 6px 0;
+}
+
+ul {
+  margin-top: 20px;
+  padding-left: 16px;
+}
 li {
-  font-size: 15px;
+  font-size: 18px;
+  margin: 6px 0;
 }
 
 section:first-child {
@@ -223,8 +260,14 @@ section.lct-info {
   margin-bottom: 30px;
 }
 
+section.lct-main-page__predict {
+  margin-top: 30px;
+}
+
 section.lct-last {
   margin-bottom: 150px;
+  margin-top: 100px;
+
   h2 {
     font-size: 30px;
   }
@@ -233,10 +276,15 @@ section.lct-last {
 .lct-main-page {
   &__predict {
     &-info {
-      max-width: 450px;
+      max-width: 470px;
       text-align: left;
     }
   }
+}
+
+section.lct-last-section {
+  margin-top: 100px;
+  margin-bottom: 100px;
 }
 
 .btn {
@@ -259,6 +307,7 @@ section.lct-last {
   padding: 24px 30px;
   font-size: 20px;
 }
+
 @media (max-width: 1000px) {
   section {
     display: flex;
@@ -302,6 +351,10 @@ section.lct-last {
 
   section.lct-last {
     margin-bottom: 40px;
+  }
+
+  .btn {
+    margin-bottom: 20px;
   }
 }
 </style>

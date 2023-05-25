@@ -5,15 +5,7 @@
         <router-link :to="{ name: 'mainPage' }" class="lct-header__logo">
           <img src="../../assets/logo.jpg" alt="" />
         </router-link>
-
-        <router-link :to="{ name: 'mainPage' }">
-          <a-button type="primary" class="btn lct-header__logo"
-            >RusFuture</a-button
-          >
-        </router-link>
-        <h2>- ПРОАНАЛИЗИРУЙ СВОЙ ПУТЬ!</h2>
       </div>
-
       <div class="lct-right">
         <router-link :to="{ name: 'mainPage' }" class="lct-header__info">
           <a-button type="primary" class="btn btn-revert">Главная</a-button>

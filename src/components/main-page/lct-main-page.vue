@@ -308,6 +308,25 @@ section.lct-last-section {
   padding: 30px 36px;
   font-size: 24px;
 }
+ul {
+  list-style: none;
+  border-left: 10px solid #02458d;
+  padding: 0;
+  font-size: 1rem;
+  font-size: 20px;
+  text-align: left;
+
+  h4 {
+    margin-bottom: 0;
+    padding-left: 10px;
+  }
+
+  li {
+    padding: 10px;
+    text-align: left;
+    font-size: 16px;
+  }
+}
 
 @media (max-width: 1000px) {
   section {

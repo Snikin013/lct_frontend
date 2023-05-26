@@ -110,7 +110,7 @@
       </a-form>
     </div>
     <a-button type="primary" @click="requestGraph()" class="btn"
-      >Проанализировать</a-button
+      >Анализировать</a-button
     >
     <router-link :to="{ name: 'analyticsPage' }">
       <a-button type="primary" class="btn">Назад</a-button>

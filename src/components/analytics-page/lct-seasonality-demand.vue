@@ -1,4 +1,5 @@
 <template>
+  <h1>Сезонность бронирования</h1>
   <div class="lct-seasonality-demand">
     <lct-analytics-form :showFlightDate="false" :link="`seasonality`" />
     <apexchart
@@ -28,6 +29,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
+h1 {
+  margin-top: 20px;
+}
+
 .lct-seasonality-demand {
   display: flex;
   margin-top: 30px;

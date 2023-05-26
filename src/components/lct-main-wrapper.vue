@@ -1,10 +1,12 @@
 <template>
   <div class="lct-main-wrapper">
-    <lctHeader />
-    <hr />
-    <keep-alive>
-      <router-view></router-view>
-    </keep-alive>
+    <div class="wrapper">
+      <lctHeader />
+      <hr />
+      <keep-alive>
+        <router-view></router-view>
+      </keep-alive>
+    </div>
     <lctFooter />
   </div>
 </template>
@@ -25,5 +27,9 @@ export default {
 <style scoped lang="scss">
 .lct-main-wrapper {
   margin: 0 auto;
+}
+
+.wrapper {
+  min-height: calc(100vh - 60px);
 }
 </style>

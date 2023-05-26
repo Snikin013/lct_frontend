@@ -1,4 +1,5 @@
 <template>
+  <h1>Динамика бронирования рейса</h1>
   <div class="lct-dynamic-flight">
     <lct-analytics-form :link="`booking-dynamics`" />
     <apexchart
@@ -27,6 +28,10 @@ export default {
 };
 </script>
 <style scoped lang="scss">
+h1 {
+  margin-top: 20px;
+}
+
 .lct-dynamic-flight {
   display: flex;
   margin-top: 30px;

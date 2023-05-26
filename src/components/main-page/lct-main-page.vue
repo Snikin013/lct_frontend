@@ -1,7 +1,5 @@
 <template>
   <div class="lct-main-page">
-    <h1>ПРОАНАЛИЗИРУЙ СВОЙ ПУТЬ!</h1>
-
     <section class="lct-main-page__predict">
       <div class="lct-main-page__predict-info">
         <h3>
@@ -70,7 +68,7 @@
         </ul>
         <router-link :to="{ name: 'analyticsPage' }">
           <a-button type="primary" class="btn btn-analytic"
-            >Проанализировать</a-button
+            >Динамика бронирования</a-button
           >
         </router-link>
       </div>
@@ -121,7 +119,7 @@
         </ul>
         <router-link :to="{ name: 'analyticsPage' }">
           <a-button type="primary" class="btn btn-analytic"
-            >Проанализировать</a-button
+            >Динамика бронирования</a-button
           >
         </router-link>
       </div>
@@ -291,10 +289,13 @@ section.lct-last-section {
   border-radius: 10px;
   background-color: #02458d;
   border-color: #02458d;
+  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.3);
+  margin-top: 25px;
+  margin-left: 15px;
 }
 
 .btn-revert {
-  border-radius: 15px;
+  border-radius: 10px;
   background: white;
   color: #02458d;
   border-color: white;
@@ -304,8 +305,8 @@ section.lct-last-section {
 .btn-analytic {
   display: flex;
   align-items: center;
-  padding: 24px 30px;
-  font-size: 20px;
+  padding: 30px 36px;
+  font-size: 24px;
 }
 
 @media (max-width: 1000px) {

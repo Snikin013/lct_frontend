@@ -45,11 +45,6 @@ export default createStore({
             },
           },
 
-          title: {
-            text: "Динамика бронирования рейса",
-            align: "left",
-            offsetX: 110,
-          },
           xaxis: {
             type: "datetime",
             categories: [

@@ -21,11 +21,10 @@
           бронирования. Период для динамики бронирования 2017 – 2019 год
         </p>
         <router-link :to="{ name: 'dynamicsFlight' }">
-          <a-button type="primary" class="btn">Проанализировать</a-button>
+          <a-button type="primary" class="btn">Динамика бронирования</a-button>
         </router-link>
       </div>
     </div>
-    <hr />
     <h2>
       Определение сезонности спроса по классам бронирования, по вылетевшим
       рейсам. (2017-2019 год)
@@ -48,16 +47,15 @@
           2019 год.
         </p>
         <router-link :to="{ name: 'seasonalityDemand' }">
-          <a-button type="primary" class="btn">Проанализировать</a-button>
+          <a-button type="primary" class="btn">Динамика бронирования</a-button>
         </router-link>
       </div>
     </div>
-    <hr />
     <h2>
       Определение профилей спроса в разрезе классов бронирования, по вылетевшим
       рейсам. (2017-2019 год)
     </h2>
-    <p>
+    <p class="p-fix">
       Определяет профиль спроса в зависимости от глубины прогнозирования для
       разных сегментированных пассажиров. Реализован автоматизированный процесс
       расчета профиля спроса в зависимости от глубины прогнозирования
@@ -83,16 +81,16 @@
           <li>просмотра профиля спроса бронирования.</li>
         </ul>
         <router-link :to="{ name: 'determinationDemand' }">
-          <a-button type="primary" class="btn">Проанализировать</a-button>
+          <a-button type="primary" class="btn">Динамика бронирования</a-button>
         </router-link>
       </div>
     </div>
-    <hr />
+    <div class="h2-header"></div>
     <h2>
       Прогнозирование спроса в разрезе классов бронирования для продаваемых
       рейсов. (2017-2019 год)
     </h2>
-    <p>
+    <p class="p-fix">
       Реализован автоматизированный процесс расчета прогнозного спроса
       бронирования по каждому продаваемому рейсу в разрезе каждого класса.
       Прогноз спроса рассчитывается для различной глубины прогнозирования
@@ -119,7 +117,7 @@
           </li>
         </ul>
         <router-link :to="{ name: 'forecastingDemand' }">
-          <a-button type="primary" class="btn">Проанализировать</a-button>
+          <a-button type="primary" class="btn">Динамика бронирования</a-button>
         </router-link>
       </div>
     </div>
@@ -136,7 +134,9 @@ export default defineComponent({
 <style scoped lang="scss">
 h2 {
   font-size: 2rem;
-  margin-top: 40px;
+  margin-top: 50px;
+  max-width: 800px;
+  margin-left: 150px;
 }
 
 p {
@@ -148,6 +148,10 @@ p {
   padding-left: 30px;
   text-align: left;
 }
+.p-fix {
+  max-width: 900px;
+  margin-left: 50px;
+}
 
 .lct-analytics-page-info {
   display: flex;
@@ -156,6 +160,11 @@ p {
     border-radius: 10px;
     background-color: #02458d;
     border-color: #02458d;
+    display: flex;
+    align-items: center;
+    padding: 20px 20px;
+    font-size: 20px;
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.3);
 
     &-revert {
       border-radius: 10px;
@@ -196,14 +205,6 @@ p {
       text-align: left;
       font-size: 16px;
     }
-
-    li:nth-child(odd) {
-      background: #e1f1ff;
-    }
-
-    li:nth-child(even) {
-      background: white;
-    }
   }
 }
 
@@ -213,15 +214,27 @@ p {
     flex-direction: column;
     align-items: center;
   }
+
   .wrapper {
     width: 100%;
   }
+
   .lct-analytics-page-info {
     display: flex;
     flex-direction: column;
   }
+
   img {
     width: 400px;
+  }
+
+  p.p-fix {
+    margin-left: 0;
+  }
+
+  h2 {
+    margin-left: 10px;
+    margin-right: 10px;
   }
 }
 </style>

@@ -259,6 +259,11 @@ export default defineComponent({
   border-radius: 10px;
   background-color: #02458d;
   border-color: #02458d;
+  display: flex;
+  align-items: center;
+  padding: 16px 20px;
+  font-size: 16px;
+  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.3);
 
   &-revert {
     border-radius: 10px;

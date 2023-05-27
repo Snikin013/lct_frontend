@@ -2,7 +2,6 @@ import axios from "axios";
 
 export default {
   GET_GRAPH_FROM_API({ commit }, graphParams) {
-    console.log(graphParams);
     return axios(
       `http://46.243.227.152:8000/api/v1/calculation/${graphParams.link}?flight_number=${graphParams.flight_number}&flight_date=${graphParams.flight_date}&booking_class=${graphParams.booking_class}&booking_period=${graphParams.booking_period}`,
       {

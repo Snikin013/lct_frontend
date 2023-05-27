@@ -85,8 +85,9 @@
           <label for="selectBookingClass">Класс бронирования:</label>
           <a-select
             v-model:value="formState.selectBookingClass"
+            mode="multiple"
             :show-arrow="false"
-            @change="updateFilters"
+            @change="handleSelectChange"
             class="ant-select"
           >
             <a-select-option
@@ -153,6 +154,15 @@ export default defineComponent({
         this.query.link = this.link;
         this.GET_GRAPH_FROM_API(this.query);
       }
+    },
+    handleSelectChange(value) {
+      if (value.length > 3) {
+        this.formState.selectBookingClass.splice(0, 1);
+        this.formState.selectBookingClass = [...value];
+      } else {
+        this.formState.selectBookingClass = [...value];
+      }
+      this.updateFilters();
     },
     updateFilters() {
       if (this.formState.selectDirection) {

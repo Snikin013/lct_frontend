@@ -3,18 +3,19 @@
     <ul>
       <div>
         <li>
-          <img src="../../assets/main-page/arrow.svg" alt="Авиарейсы" />
           <div>
             <a href="#dynamicsFlight">
+              <img src="../../assets/main-page/arrow.svg" alt="Авиарейсы" />
               Определение динамики бронирований рейса в разрезе классов
               бронирования по вылетевшим рейсам;
             </a>
           </div>
         </li>
         <li>
-          <img src="../../assets/main-page/arrow.svg" alt="Авиарейсы" />
           <div>
             <a href="#seasonalityDemand">
+              <img src="../../assets/main-page/arrow.svg" alt="Авиарейсы" />
+
               Определение сезонности спроса по классам бронирования, по
               вылетевшим рейсам;
             </a>
@@ -23,18 +24,20 @@
       </div>
       <div>
         <li>
-          <img src="../../assets/main-page/arrow.svg" alt="Авиарейсы" />
           <div>
             <a href="#determinationDemand">
+              <img src="../../assets/main-page/arrow.svg" alt="Авиарейсы" />
+
               Определение профилей спроса в разрезе классов бронирования, по
               вылетевшим рейсам;
             </a>
           </div>
         </li>
         <li>
-          <img src="../../assets/main-page/arrow.svg" alt="Авиарейсы" />
           <div>
             <a href="#forecastingDemand">
+              <img src="../../assets/main-page/arrow.svg" alt="Авиарейсы" />
+
               Прогнозирование спроса в разрезе классов бронирования для
               продаваемых рейсов.
             </a>
@@ -210,6 +213,7 @@ export default defineComponent({
 
     a {
       color: black;
+      display: flex;
     }
 
     img {
@@ -302,6 +306,14 @@ p {
   &-last {
     margin-bottom: 50px;
   }
+}
+
+*[id]:before {
+  display: block;
+  content: " ";
+  margin-top: -75px;
+  height: 75px;
+  visibility: hidden;
 }
 
 @media (max-width: 1000px) {

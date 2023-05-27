@@ -1,4 +1,5 @@
 <template>
+  <h1>Класс бронирования</h1>
   <div class="lct-forecasting-demand">
     <lct-analytics-form />
     <apexchart
@@ -28,6 +29,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
+h1 {
+  margin-top: 20px;
+}
+
 .lct-forecasting-demand {
   display: flex;
   margin-top: 30px;

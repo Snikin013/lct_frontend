@@ -60,11 +60,11 @@
           <a-date-picker
             v-model:value="formState.flightDate"
             value-format="YYYY-MM-DD"
-            defaultPickerValue="2017-01-01"
+            defaultPickerValue="2018-01-01"
             :disabled-date="
               (date) => {
                 const year = date.year();
-                return year < 2017 || year > 2019;
+                return year < 2018 || year > 2019;
               }
             "
             @change="updateFilters"
@@ -273,7 +273,6 @@ export default defineComponent({
   align-items: center;
   padding: 16px 20px;
   font-size: 16px;
-  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.3);
 
   &-revert {
     border-radius: 10px;

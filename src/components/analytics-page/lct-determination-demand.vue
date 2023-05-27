@@ -1,4 +1,5 @@
 <template>
+  <h1>Профиль бронирования</h1>
   <div class="lct-determination-demand">
     <lct-analytics-form />
     <apexchart
@@ -27,6 +28,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
+h1 {
+  margin-top: 20px;
+}
 .lct-determination-demand {
   display: flex;
   margin-top: 30px;

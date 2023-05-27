@@ -1,13 +1,58 @@
 <template>
+  <div class="ul-wrap">
+    <ul>
+      <div>
+        <li>
+          <img src="../../assets/main-page/arrow.svg" alt="Авиарейсы" />
+          <div>
+            <a href="#dynamicsFlight">
+              Определение динамики бронирований рейса в разрезе классов
+              бронирования по вылетевшим рейсам;
+            </a>
+          </div>
+        </li>
+        <li>
+          <img src="../../assets/main-page/arrow.svg" alt="Авиарейсы" />
+          <div>
+            <a href="#seasonalityDemand">
+              Определение сезонности спроса по классам бронирования, по
+              вылетевшим рейсам;
+            </a>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li>
+          <img src="../../assets/main-page/arrow.svg" alt="Авиарейсы" />
+          <div>
+            <a href="#determinationDemand">
+              Определение профилей спроса в разрезе классов бронирования, по
+              вылетевшим рейсам;
+            </a>
+          </div>
+        </li>
+        <li>
+          <img src="../../assets/main-page/arrow.svg" alt="Авиарейсы" />
+          <div>
+            <a href="#forecastingDemand">
+              Прогнозирование спроса в разрезе классов бронирования для
+              продаваемых рейсов.
+            </a>
+          </div>
+        </li>
+      </div>
+    </ul>
+  </div>
+
   <div class="lct-analytics-page">
-    <h2>
+    <h2 id="dynamicsFlight">
       Определение динамики бронирований рейса в разрезе классов бронирования по
       вылетевшим рейсам. (2017-2019 год)
     </h2>
     <div class="lct-analytics-page-info">
       <div class="wrapper">
         <img
-          src="../../assets/analytics-type/1.jpg"
+          src="../../assets/analytics-type/1.png"
           alt="Определение динамики бронирований"
           class="icon"
         />
@@ -25,14 +70,14 @@
         </router-link>
       </div>
     </div>
-    <h2>
+    <h2 id="seasonalityDemand">
       Определение сезонности спроса по классам бронирования, по вылетевшим
       рейсам. (2017-2019 год)
     </h2>
     <div class="lct-analytics-page-info">
       <div class="wrapper">
         <img
-          src="../../assets/analytics-type/2.jpg"
+          src="../../assets/analytics-type/2.png"
           alt="Определение сезонности спроса"
           class="icon"
         />
@@ -47,11 +92,13 @@
           2019 год.
         </p>
         <router-link :to="{ name: 'seasonalityDemand' }">
-          <a-button type="primary" class="btn">Динамика бронирования</a-button>
+          <a-button type="primary" class="btn"
+            >Сезонность бронирования</a-button
+          >
         </router-link>
       </div>
     </div>
-    <h2>
+    <h2 id="determinationDemand">
       Определение профилей спроса в разрезе классов бронирования, по вылетевшим
       рейсам. (2017-2019 год)
     </h2>
@@ -66,7 +113,7 @@
     <div class="lct-analytics-page-info">
       <div class="wrapper">
         <img
-          src="../../assets/analytics-type/3.jpg"
+          src="../../assets/analytics-type/3.png"
           alt="Определение профилей спроса в разрезе классов бронирования"
           class="icon"
         />
@@ -81,12 +128,12 @@
           <li>просмотра профиля спроса бронирования.</li>
         </ul>
         <router-link :to="{ name: 'determinationDemand' }">
-          <a-button type="primary" class="btn">Динамика бронирования</a-button>
+          <a-button type="primary" class="btn">Профиль бронирования</a-button>
         </router-link>
       </div>
     </div>
     <div class="h2-header"></div>
-    <h2>
+    <h2 id="forecastingDemand">
       Прогнозирование спроса в разрезе классов бронирования для продаваемых
       рейсов. (2017-2019 год)
     </h2>
@@ -98,9 +145,9 @@
       гистограммы). Добавлена возможность управлять периодом просмотра прогноза
       спроса бронирования.
     </p>
-    <div class="lct-analytics-page-info">
+    <div class="lct-analytics-page-info lct-analytics-page-info-last">
       <div class="wrapper">
-        <img src="../../assets/analytics-type/4.jpg" alt="ICON" class="icon" />
+        <img src="../../assets/analytics-type/4.png" alt="ICON" class="icon" />
       </div>
       <div class="wrapper info">
         <ul>
@@ -117,7 +164,7 @@
           </li>
         </ul>
         <router-link :to="{ name: 'forecastingDemand' }">
-          <a-button type="primary" class="btn">Динамика бронирования</a-button>
+          <a-button type="primary" class="btn">Класс бронирования</a-button>
         </router-link>
       </div>
     </div>
@@ -132,6 +179,49 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
+.ul-wrap {
+  margin-bottom: 100px;
+  margin-top: 50px;
+
+  ul {
+    list-style: none;
+    display: flex;
+    font-size: 1rem;
+    font-size: 20px;
+    justify-content: space-between;
+
+    p {
+      font-size: 16px;
+    }
+
+    h4 {
+      margin-bottom: 0;
+      padding-left: 10px;
+    }
+  }
+  li {
+    text-align: left;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    max-width: 400px;
+    margin-right: 50px;
+    margin-top: 30px;
+
+    a {
+      color: black;
+    }
+
+    img {
+      margin-right: 20px;
+    }
+  }
+}
+
+img.icon {
+  max-width: 600px;
+}
+
 h2 {
   font-size: 2rem;
   margin-top: 50px;
@@ -145,7 +235,6 @@ p {
   min-height: 1px;
   font-size: 1rem;
   padding-right: 30px;
-  padding-left: 30px;
   text-align: left;
 }
 .p-fix {
@@ -164,7 +253,6 @@ p {
     align-items: center;
     padding: 20px 20px;
     font-size: 20px;
-    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.3);
 
     &-revert {
       border-radius: 10px;
@@ -181,16 +269,16 @@ p {
 
   .info {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: column;
     justify-content: center;
+    margin-left: 30px;
   }
 
   ul {
     list-style: none;
     border-left: 10px solid #02458d;
     padding: 0;
-    margin-left: 30px;
     font-size: 1rem;
     font-size: 20px;
     text-align: left;
@@ -205,6 +293,14 @@ p {
       text-align: left;
       font-size: 16px;
     }
+  }
+}
+
+.lct-analytics-page-info {
+  margin-bottom: 150px;
+
+  &-last {
+    margin-bottom: 50px;
   }
 }
 
@@ -228,10 +324,12 @@ p {
     width: 400px;
   }
 
-  p.p-fix {
-    margin-left: 0;
+  ul {
+    flex-direction: column;
+    img {
+      width: 40px;
+    }
   }
-
   h2 {
     margin-left: 10px;
     margin-right: 10px;

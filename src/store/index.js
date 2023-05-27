@@ -22,6 +22,10 @@ export default createStore({
             type: "column",
             data: [1.1, 3, 4, 1, 4.1, 6.5, 4, 10],
           },
+          {
+            name: "Данных для класс D не найдено",
+            data: [0, 0, 0, 0, 0, 0, 0, 0],
+          },
         ],
         chart_options: {
           chart: {

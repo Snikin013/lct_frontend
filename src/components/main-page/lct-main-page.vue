@@ -1,18 +1,18 @@
 <template>
   <div class="lct-main-page">
-    <section class="lct-main-page__predict">
+    <section class="lct-main-page__predict section-with-icons">
       <div class="lct-main-page__predict-info">
         <h3>
           РЕКОМЕНДАТЕЛЬНЫЙ СЕРВИС ДИНАМИЧЕСКОГО ПРОГНОЗИРОВАНИЯ СПРОСА НА
           АВИАРЕЙСЫ
         </h3>
         <p>
-          Сервис для прогнозирования спроса на авиарейсы, учитывающий динамику
-          бронирования, сезонность и внешние факторы. Система управления
-          доходами предназначена для увеличения доходов авиакомпании от продажи
-          услуг пассажирских перевозок с использованием технологии определения
-          оптимальных объемов продаж по классам бронирования
+          Анализирует данные и предсказывает спрос на авиабилеты для оптимизации
+          бизнеса.
         </p>
+        <router-link :to="{ name: 'analyticsPage' }">
+          <a-button type="primary" class="btn btn-analytic">Перейти</a-button>
+        </router-link>
       </div>
       <div class="lct-main-page__predict-photos">
         <div class="outer">
@@ -29,7 +29,54 @@
         </div>
       </div>
     </section>
-    <section class="lct-main-page__predict">
+    <section>
+      <div class="list-wrapper">
+        <h1>Решает следующие задачи:</h1>
+        <ul>
+          <div>
+            <li>
+              <img src="../../assets/main-page/iconCheck.png" alt="Авиарейсы" />
+              <div>
+                <p>
+                  Определение динамики бронирований рейса в разрезе классов
+                  бронирования по вылетевшим рейсам;
+                </p>
+              </div>
+            </li>
+            <li>
+              <img src="../../assets/main-page/iconCheck.png" alt="Авиарейсы" />
+              <div>
+                <p>
+                  Определение сезонности спроса по классам бронирования, по
+                  вылетевшим рейсам;
+                </p>
+              </div>
+            </li>
+          </div>
+          <div>
+            <li>
+              <img src="../../assets/main-page/iconCheck.png" alt="Авиарейсы" />
+              <div>
+                <p>
+                  Определение профилей спроса в разрезе классов бронирования, по
+                  вылетевшим рейсам;
+                </p>
+              </div>
+            </li>
+            <li>
+              <img src="../../assets/main-page/iconCheck.png" alt="Авиарейсы" />
+              <div>
+                <p>
+                  Прогнозирование спроса в разрезе классов бронирования для
+                  продаваемых рейсов.
+                </p>
+              </div>
+            </li>
+          </div>
+        </ul>
+      </div>
+    </section>
+    <section class="lct-main-page__predict section-with-icons">
       <div
         class="lct-main-page__predict-photos lct-main-page__predict-photos-last"
       >
@@ -47,33 +94,20 @@
         </div>
       </div>
       <div class="lct-main-page__predict-info">
-        <h1>Решает следующие задачи:</h1>
-        <ul>
-          <li>
-            Определение динамики бронирований рейса в разрезе классов
-            бронирования по вылетевшим рейсам;
-          </li>
-          <li>
-            Определение сезонности спроса по классам бронирования, по вылетевшим
-            рейсам;
-          </li>
-          <li>
-            Определение профилей спроса в разрезе классов бронирования, по
-            вылетевшим рейсам;
-          </li>
-          <li>
-            Прогнозирование спроса в разрезе классов бронирования для
-            продаваемых рейсов.
-          </li>
-        </ul>
-        <router-link :to="{ name: 'analyticsPage' }">
-          <a-button type="primary" class="btn btn-analytic"
-            >Динамика бронирования</a-button
-          >
-        </router-link>
+        <h3>
+          Умный сервис для оптимизации доходов авиакомпаний: прогноз спроса и
+          управление продажами
+        </h3>
+        <p>
+          Сервис для прогнозирования спроса на авиарейсы, учитывающий динамику
+          бронирования, сезонность и внешние факторы. Система управления
+          доходами предназначена для увеличения доходов авиакомпании от продажи
+          услуг пассажирских перевозок с использованием технологии определения
+          оптимальных объемов продаж по классам бронирования
+        </p>
       </div>
     </section>
-    <section class="lct-info">
+    <section class="lct-main-page__predict lct-info">
       <div class="service-info">
         <div>
           <h1 class="service-info-header">АКТУАЛЬНОСТЬ ЗАДАЧИ</h1>
@@ -98,30 +132,17 @@
         </p>
       </div>
     </section>
-    <section class="lct-main-page__predict lct-last-section">
+    <section class="lct-main-page__predict">
       <div class="lct-main-page__predict-info">
-        <h1>Преимущества сервиса:</h1>
-        <ul>
-          <li>
-            Увеличение точности прогнозирования спроса на авиарейсы, что
-            позволяет более эффективно управлять заполненностью рейсов и
-            оптимизировать расписание полетов;
-          </li>
-          <li>
-            Снижение затрат на маркетинг и рекламу благодаря более точной оценке
-            потребностей клиентов;
-          </li>
-          <li>
-            Предоставление возможности быстро адаптироваться к изменениям в
-            спросе, таким как сезонные колебания или неожиданные события
-            (например, пандемия).
-          </li>
-        </ul>
-        <router-link :to="{ name: 'analyticsPage' }">
-          <a-button type="primary" class="btn btn-analytic"
-            >Динамика бронирования</a-button
-          >
-        </router-link>
+        <h2>Аэрофлот</h2>
+        <p>
+          Крупнейшая авиакомпания России и одна из крупнейших авиакомпаний в
+          мире. Компания была основана в 1923 году и на сегодняшний день
+          предлагает широкий выбор маршрутов по всему миру. Аэрофлот выполняет
+          как внутренние, так и международные рейсы, а также предлагает
+          чартерные рейсы и услуги грузовой авиации. Имеет множество
+          функциональных сервисов
+        </p>
       </div>
       <div class="lct-main-page__predict-photos">
         <div class="outer">
@@ -133,10 +154,64 @@
         </div>
       </div>
     </section>
+    <section class="lct-main-page__predict lct-last-section">
+      <div class="list-wrapper">
+        <h1>Преимущества сервиса:</h1>
+        <ul>
+          <li>
+            <div>
+              <div class="img-wrap">
+                <img
+                  src="../../assets/main-page/iconCheck.png"
+                  alt="Авиарейсы"
+                />
+                <h4>Точность прогноза</h4>
+              </div>
+              <p>
+                Увеличение точности прогнозирования спроса на авиарейсы, что
+                позволяет более эффективно управлять заполненностью рейсов и
+                оптимизировать расписание полетов;
+              </p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <div class="img-wrap">
+                <img
+                  src="../../assets/main-page/iconCheck.png"
+                  alt="Авиарейсы"
+                />
+                <h4>Снижение затрат</h4>
+              </div>
+              <p>
+                Снижение затрат на маркетинг и рекламу благодаря более точной
+                оценке потребностей клиентов;
+              </p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <div class="img-wrap">
+                <img
+                  src="../../assets/main-page/iconCheck.png"
+                  alt="Авиарейсы"
+                />
+                <h4>Адаптируемость</h4>
+              </div>
+              <p>
+                Предоставление возможности быстро адаптироваться к изменениям в
+                спросе, таким как сезонные колебания или неожиданные события
+                (например, пандемия).
+              </p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
 
     <img
       class="finish-img"
-      src="../../assets/main-page/plane-large.svg"
+      src="../../assets/main-page/dzet.png"
       alt="Самолеты Аэрофлот"
     />
   </div>
@@ -159,8 +234,8 @@ export default {
 }
 
 section {
-  margin-top: 100px;
-  margin-bottom: 220px;
+  margin-top: 50px;
+  margin-bottom: 130px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -222,6 +297,10 @@ section {
   }
 }
 
+section.section-with-icons {
+  margin-bottom: 200px;
+}
+
 h1 {
   font-size: 40px;
   margin-bottom: 10px;
@@ -241,31 +320,57 @@ p {
   margin-bottom: 6px 0;
 }
 
-ul {
-  margin-top: 20px;
-  padding-left: 16px;
-}
-li {
-  font-size: 18px;
-  margin: 6px 0;
-}
+.list-wrapper {
+  ul {
+    margin-top: 20px;
+    padding-left: 16px;
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
 
-section:first-child {
-  margin-top: 30px;
-}
+  li {
+    margin: 30px 0;
+    display: flex;
+    margin-right: 80px;
+    font-size: 18px;
+    align-items: center;
 
-section.lct-info {
-  margin-bottom: 30px;
-}
+    p {
+      max-width: 350px;
+    }
 
-section.lct-main-page__predict {
-  margin-top: 30px;
+    h4 {
+      padding-left: 0;
+      margin-bottom: 5px;
+    }
+
+    img {
+      width: 50px;
+      height: 50px;
+      margin-right: 20px;
+    }
+    .img-wrap {
+      display: flex;
+      align-items: center;
+      margin-bottom: 5px;
+
+      h4 {
+        padding-left: 0;
+        margin-bottom: 0px;
+      }
+
+      img {
+        width: 30px;
+        height: 30px;
+        margin-right: 5px;
+      }
+    }
+  }
 }
 
 section.lct-last {
-  margin-bottom: 150px;
-  margin-top: 100px;
-
   h2 {
     font-size: 30px;
   }
@@ -280,18 +385,11 @@ section.lct-last {
   }
 }
 
-section.lct-last-section {
-  margin-top: 100px;
-  margin-bottom: 100px;
-}
-
 .btn {
   border-radius: 10px;
   background-color: #02458d;
   border-color: #02458d;
-  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.3);
   margin-top: 25px;
-  margin-left: 15px;
 }
 
 .btn-revert {
@@ -310,11 +408,14 @@ section.lct-last-section {
 }
 ul {
   list-style: none;
-  border-left: 10px solid #02458d;
-  padding: 0;
+  display: flex;
+  justify-content: space-between;
   font-size: 1rem;
   font-size: 20px;
-  text-align: left;
+
+  p {
+    font-size: 16px;
+  }
 
   h4 {
     margin-bottom: 0;
@@ -322,10 +423,17 @@ ul {
   }
 
   li {
-    padding: 10px;
     text-align: left;
     font-size: 16px;
   }
+}
+
+section.lct-last-section {
+  margin-bottom: 0;
+}
+
+.finish-img {
+  max-width: 600px;
 }
 
 @media (max-width: 1000px) {
@@ -333,6 +441,7 @@ ul {
     display: flex;
     flex-direction: column;
     margin: 0 30px;
+    margin-bottom: 40px;
 
     .service-info {
       max-width: 350px;
@@ -346,6 +455,14 @@ ul {
     .img {
       width: 350px;
     }
+    ul {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  section.section-with-icons {
+    margin-bottom: 40px;
   }
 
   .lct-main-page__predict-photos {

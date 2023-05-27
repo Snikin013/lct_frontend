@@ -2,14 +2,11 @@
   <header>
     <div class="lct-header">
       <div class="lct-left">
-        <router-link :to="{ name: 'mainPage' }" class="lct-header__logo">
-          <img src="../../assets/logo.jpg" alt="" />
+        <router-link :to="{ name: 'mainPage' }" class="lct-header__info">
+          <a-button type="primary" class="btn btn-revert">RusFuture</a-button>
         </router-link>
       </div>
       <div class="lct-right">
-        <router-link :to="{ name: 'mainPage' }" class="lct-header__info">
-          <a-button type="primary" class="btn btn-revert">Главная</a-button>
-        </router-link>
         <router-link :to="{ name: 'analyticsPage' }">
           <a-button type="primary" class="btn">Аналитика</a-button>
         </router-link>

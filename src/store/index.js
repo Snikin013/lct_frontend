@@ -90,9 +90,22 @@ export default createStore({
                   colors: "#02458d",
                 },
               },
+              tooltip: {
+                enabled: true,
+              },
             },
           ],
           tooltip: {
+            enabled: true,
+            shared: true,
+            intersect: false,
+            followCursor: true,
+            marker: {
+              show: false,
+            },
+            x: {
+              format: "dd MMM yyyy",
+            },
             fixed: {
               enabled: true,
               position: "topLeft",
@@ -103,6 +116,7 @@ export default createStore({
           legend: {
             horizontalAlign: "left",
             offsetX: 40,
+            fontSize: "17px",
           },
         },
       },

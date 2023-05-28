@@ -80,18 +80,11 @@
       <div
         class="lct-main-page__predict-photos lct-main-page__predict-photos-last"
       >
-        <div class="outer">
-          <img
-            src="../../assets/main-page/airplane.jpg"
-            alt="Купить билет на самолет"
-            class="img"
-          />
-          <img
-            src="../../assets/main-page/chart.jpg"
-            alt="Аналитика покупки билетов авиаресов"
-            class="img inner-left inner-bs"
-          />
-        </div>
+        <img
+          src="../../assets/main-page/windowPlane.jpg"
+          alt="Купить билет на самолет"
+          class="img"
+        />
       </div>
       <div class="lct-main-page__predict-info">
         <h3>
@@ -132,28 +125,7 @@
         </p>
       </div>
     </section>
-    <section class="lct-main-page__predict">
-      <div class="lct-main-page__predict-info">
-        <h2>Аэрофлот</h2>
-        <p>
-          Крупнейшая авиакомпания России и одна из крупнейших авиакомпаний в
-          мире. Компания была основана в 1923 году и на сегодняшний день
-          предлагает широкий выбор маршрутов по всему миру. Аэрофлот выполняет
-          как внутренние, так и международные рейсы, а также предлагает
-          чартерные рейсы и услуги грузовой авиации. Имеет множество
-          функциональных сервисов
-        </p>
-      </div>
-      <div class="lct-main-page__predict-photos">
-        <div class="outer">
-          <img
-            src="../../assets/main-page/windowPlane.jpg"
-            alt="Купить билет на самолет"
-            class="img"
-          />
-        </div>
-      </div>
-    </section>
+
     <section class="lct-main-page__predict lct-last-section">
       <div class="list-wrapper">
         <h1>Преимущества сервиса:</h1>

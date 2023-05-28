@@ -1,7 +1,7 @@
 <template>
   <h1>Профиль бронирования</h1>
   <div class="lct-determination-demand">
-    <lct-analytics-form />
+    <lct-analytics-form :link="`demand-profile`" />
     <apexchart
       v-if="this.GRAPH"
       type="bar"

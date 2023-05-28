@@ -1,7 +1,12 @@
 <template>
   <h1>Класс бронирования</h1>
   <div class="lct-forecasting-demand">
-    <lct-analytics-form />
+    <lct-analytics-form
+      :link="`demand-forecast`"
+      :toFlightDate="2020"
+      :fromFlightDate="2020"
+      :pickerValue="`2020-01-01`"
+    />
     <apexchart
       v-if="this.GRAPH"
       type="bar"

@@ -51,6 +51,28 @@
           </a-select>
         </a-form-item>
         <a-form-item
+          name="selectScenarios"
+          v-if="showScenarios"
+          :rules="[
+            {
+              required: true,
+              message: 'Пожалуйста, выберите сценарий',
+            },
+          ]"
+          class="form-item"
+        >
+          <label for="selectScenarios">Сценарий:</label>
+          <a-select
+            v-model:value="formState.selectScenarios"
+            :show-arrow="false"
+            @change="updateFilters"
+          >
+            <a-select-option v-for="item in SCENARIOS.scenarios" :key="item">
+              {{ item }}</a-select-option
+            >
+          </a-select>
+        </a-form-item>
+        <a-form-item
           name="flightDate"
           v-bind="config"
           v-if="showFlightDate"
@@ -73,19 +95,14 @@
           />
         </a-form-item>
         <a-form-item
+          v-if="showClass"
           name="selectBookingClass"
-          :rules="[
-            {
-              required: true,
-              message: 'Пожалуйста, выберите класс бронирования!',
-            },
-          ]"
           class="form-item"
         >
           <label for="selectBookingClass">Класс бронирования:</label>
           <a-select
             v-model:value="formState.selectBookingClass"
-            mode="multiple"
+            :mode="mode"
             :show-arrow="false"
             @change="handleSelectChange"
             class="ant-select"
@@ -97,8 +114,19 @@
               {{ item }}</a-select-option
             >
           </a-select>
+          <a-checkbox
+            v-if="showCheckBoxClass"
+            v-model:checked="selectAllClasses"
+            @change="handleCheckboxChange"
+            class="ant-select"
+            >Все классы</a-checkbox
+          >
         </a-form-item>
-        <a-form-item name="bookingPeriod" class="form-item">
+        <a-form-item
+          name="bookingPeriod"
+          class="form-item"
+          v-if="showFlightPeriod"
+        >
           <label for="bookingPeriod">Количество месяцев от даты полета: </label>
           <a-input-number
             v-model:value="formData.bookingPeriod"
@@ -106,6 +134,53 @@
             :max="12"
             @change="updateFilters"
             class="ant-picker ant-select"
+          />
+        </a-form-item>
+        <a-form-item
+          name="flightStart"
+          v-bind="config"
+          v-if="showFlightStart"
+          class="form-item"
+        >
+          <label for="flightStart">Начальная дата:</label>
+          <a-date-picker
+            v-model:value="formState.flightStart"
+            value-format="YYYY-MM-DD"
+            :defaultPickerValue="pickerValue"
+            :disabled-date="
+              (date) => {
+                const year = date.year();
+                return year < toFlightDate || year > fromFlightDate;
+              }
+            "
+            @change="updateFilters"
+            placeholder=""
+            class="ant-select"
+          />
+        </a-form-item>
+        <a-form-item
+          name="flightEnd"
+          v-bind="config"
+          v-if="showFlightEnd"
+          class="form-item"
+        >
+          <label for="flightEnd">Конечная дата:</label>
+          <a-date-picker
+            v-model:value="formState.flightEnd"
+            value-format="YYYY-MM-DD"
+            :defaultPickerValue="formState.flightStart"
+            :disabled-date="
+              (date) => {
+                const start = formState.flightStart;
+                return (
+                  start &&
+                  (date.isBefore(start) || date.isAfter(toFlightDatePeriod))
+                );
+              }
+            "
+            @change="updateFilters"
+            placeholder=""
+            class="ant-select"
           />
         </a-form-item>
       </a-form>
@@ -131,6 +206,7 @@ export default defineComponent({
       formData: {
         bookingPeriod: 1,
       },
+      selectAllClasses: false,
     };
   },
   props: {
@@ -149,14 +225,47 @@ export default defineComponent({
       type: Number,
       default: 2019,
     },
+    toFlightDatePeriod: {
+      type: String,
+      default: "2019-12-31",
+    },
     pickerValue: {
       type: String,
       default: "2018-01-01",
+    },
+    mode: {
+      type: String,
+      default: "multiple",
+    },
+    showFlightPeriod: {
+      type: Boolean,
+      default: true,
+    },
+    showFlightStart: {
+      type: Boolean,
+      default: false,
+    },
+    showFlightEnd: {
+      type: Boolean,
+      default: false,
+    },
+    showScenarios: {
+      type: Boolean,
+      default: false,
+    },
+    showClass: {
+      type: Boolean,
+      default: true,
+    },
+    showCheckBoxClass: {
+      type: Boolean,
+      default: false,
     },
   },
   methods: {
     ...mapActions([
       "GET_DIRECTIONS_FROM_API",
+      "GET_SCENARIOS_FROM_API",
       "GET_FLIGHT_NUMBERS_FROM_API",
       "GET_BOOKING_CLASSES_FROM_API",
       "GET_GRAPH_FROM_API",
@@ -167,7 +276,17 @@ export default defineComponent({
         this.GET_GRAPH_FROM_API(this.query);
       }
     },
+    handleCheckboxChange(e) {
+      this.selectAllClasses = true;
+      if (e.target.checked) {
+        this.formState.selectBookingClass = [];
+        this.query.booking_class = [];
+      }
+    },
     handleSelectChange(value) {
+      if (value) {
+        this.selectAllClasses = false;
+      }
       if (value.length > 3) {
         this.formState.selectBookingClass.splice(0, 1);
         this.formState.selectBookingClass = [...value];
@@ -184,8 +303,20 @@ export default defineComponent({
         }
       }
 
+      if (this.formState.selectScenarios) {
+        this.query.scenario = this.formState.selectScenarios;
+      }
+
       if (this.formState.flightDate) {
         this.query.flight_date = this.formState.flightDate;
+      }
+
+      if (this.formState.flightEnd) {
+        this.query.booking_end = this.formState.flightEnd;
+      }
+
+      if (this.formState.flightStart) {
+        this.query.booking_start = this.formState.flightStart;
       }
 
       if (this.formState.selectBookingClass) {
@@ -249,12 +380,22 @@ export default defineComponent({
     };
   },
   computed: {
-    ...mapGetters(["DIRECTIONS", "FLIGHT_NUMBERS", "BOOKING_CLASSES", "GRAPH"]),
+    ...mapGetters([
+      "DIRECTIONS",
+      "FLIGHT_NUMBERS",
+      "BOOKING_CLASSES",
+      "GRAPH",
+      "SCENARIOS",
+    ]),
   },
 
   mounted() {
     if (!this.DIRECTIONS.length) {
       this.GET_DIRECTIONS_FROM_API();
+    }
+
+    if (!this.SCENARIOS.length) {
+      this.GET_SCENARIOS_FROM_API();
     }
 
     if (!this.BOOKING_CLASSES.length) {
